@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F5724D72A42C1020044715A /* AltheaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724D62A42C1020044715A /* AltheaApp.swift */; };
+		0F5724D92A42C1020044715A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724D82A42C1020044715A /* HomeView.swift */; };
+		0F5724DB2A42C1030044715A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F5724DA2A42C1030044715A /* Assets.xcassets */; };
+		0F5724DE2A42C1030044715A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F5724DD2A42C1030044715A /* Preview Assets.xcassets */; };
+		0F5724E52A42C2BA0044715A /* RolePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724E42A42C2BA0044715A /* RolePickView.swift */; };
+		0F5724E72A42C2DF0044715A /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724E62A42C2DF0044715A /* FriendsView.swift */; };
+		0F5724EA2A42C4460044715A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724E92A42C4460044715A /* ChatView.swift */; };
+		0F5724EC2A42C4580044715A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724EB2A42C4580044715A /* MessageView.swift */; };
+		0F5724EF2A42C4DA0044715A /* RealTimeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724EE2A42C4DA0044715A /* RealTimeGame.swift */; };
+		0F5724F12A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724F02A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift */; };
+		0F5724F32A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724F22A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift */; };
+		0F5724F52A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724F42A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift */; };
+		0F5724F72A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724F62A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift */; };
+		0F5724F92A42C7CE0044715A /* RealTimeGame+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724F82A42C7CE0044715A /* RealTimeGame+Messages.swift */; };
+		0F5724FB2A42C81F0044715A /* RealTimeGame+Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */; };
+		0F5724FD2A42C8570044715A /* RealTimeGame+VoiceChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */; };
+		0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F5724D32A42C1020044715A /* Althea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Althea.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F5724D62A42C1020044715A /* AltheaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltheaApp.swift; sourceTree = "<group>"; };
+		0F5724D82A42C1020044715A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0F5724DA2A42C1030044715A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F5724DD2A42C1030044715A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0F5724E42A42C2BA0044715A /* RolePickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RolePickView.swift; sourceTree = "<group>"; };
+		0F5724E62A42C2DF0044715A /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		0F5724E92A42C4460044715A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		0F5724EB2A42C4580044715A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		0F5724EE2A42C4DA0044715A /* RealTimeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGame.swift; sourceTree = "<group>"; };
+		0F5724F02A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+GKGameCenterView.swift"; sourceTree = "<group>"; };
+		0F5724F22A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+LocalPlayerListener.swift"; sourceTree = "<group>"; };
+		0F5724F42A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+GKMatchDelegate.swift"; sourceTree = "<group>"; };
+		0F5724F62A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+GKMatchmakerView.swift"; sourceTree = "<group>"; };
+		0F5724F82A42C7CE0044715A /* RealTimeGame+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+Messages.swift"; sourceTree = "<group>"; };
+		0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+Friends.swift"; sourceTree = "<group>"; };
+		0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+VoiceChat.swift"; sourceTree = "<group>"; };
+		0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+MatchData.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0F5724D02A42C1020044715A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F5724CA2A42C1020044715A = {
+			isa = PBXGroup;
+			children = (
+				0F5724D52A42C1020044715A /* Althea */,
+				0F5724D42A42C1020044715A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0F5724D42A42C1020044715A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F5724D32A42C1020044715A /* Althea.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0F5724D52A42C1020044715A /* Althea */ = {
+			isa = PBXGroup;
+			children = (
+				0F5724D62A42C1020044715A /* AltheaApp.swift */,
+				0F5724E82A42C3200044715A /* GameKitView */,
+				0F5724ED2A42C4B80044715A /* GameKitUtilities */,
+				0F5724DA2A42C1030044715A /* Assets.xcassets */,
+				0F5724DC2A42C1030044715A /* Preview Content */,
+			);
+			path = Althea;
+			sourceTree = "<group>";
+		};
+		0F5724DC2A42C1030044715A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0F5724DD2A42C1030044715A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F5724E82A42C3200044715A /* GameKitView */ = {
+			isa = PBXGroup;
+			children = (
+				0F5724D82A42C1020044715A /* HomeView.swift */,
+				0F5724E42A42C2BA0044715A /* RolePickView.swift */,
+				0F5724E62A42C2DF0044715A /* FriendsView.swift */,
+				0F5724E92A42C4460044715A /* ChatView.swift */,
+				0F5724EB2A42C4580044715A /* MessageView.swift */,
+			);
+			path = GameKitView;
+			sourceTree = "<group>";
+		};
+		0F5724ED2A42C4B80044715A /* GameKitUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				0F5724EE2A42C4DA0044715A /* RealTimeGame.swift */,
+				0F5724F02A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift */,
+				0F5724F22A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift */,
+				0F5724F42A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift */,
+				0F5724F62A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift */,
+				0F5724F82A42C7CE0044715A /* RealTimeGame+Messages.swift */,
+				0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */,
+				0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */,
+				0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */,
+			);
+			path = GameKitUtilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F5724D22A42C1020044715A /* Althea */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F5724E12A42C1030044715A /* Build configuration list for PBXNativeTarget "Althea" */;
+			buildPhases = (
+				0F5724CF2A42C1020044715A /* Sources */,
+				0F5724D02A42C1020044715A /* Frameworks */,
+				0F5724D12A42C1020044715A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Althea;
+			productName = Althea;
+			productReference = 0F5724D32A42C1020044715A /* Althea.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0F5724CB2A42C1020044715A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					0F5724D22A42C1020044715A = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 0F5724CE2A42C1020044715A /* Build configuration list for PBXProject "Althea" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0F5724CA2A42C1020044715A;
+			productRefGroup = 0F5724D42A42C1020044715A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F5724D22A42C1020044715A /* Althea */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F5724D12A42C1020044715A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F5724DE2A42C1030044715A /* Preview Assets.xcassets in Resources */,
+				0F5724DB2A42C1030044715A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F5724CF2A42C1020044715A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F5724EC2A42C4580044715A /* MessageView.swift in Sources */,
+				0F5724D92A42C1020044715A /* HomeView.swift in Sources */,
+				0F5724EF2A42C4DA0044715A /* RealTimeGame.swift in Sources */,
+				0F5724E52A42C2BA0044715A /* RolePickView.swift in Sources */,
+				0F5724F32A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift in Sources */,
+				0F5724F72A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift in Sources */,
+				0F5724F92A42C7CE0044715A /* RealTimeGame+Messages.swift in Sources */,
+				0F5724EA2A42C4460044715A /* ChatView.swift in Sources */,
+				0F5724E72A42C2DF0044715A /* FriendsView.swift in Sources */,
+				0F5724F52A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift in Sources */,
+				0F5724F12A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift in Sources */,
+				0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */,
+				0F5724FD2A42C8570044715A /* RealTimeGame+VoiceChat.swift in Sources */,
+				0F5724FB2A42C81F0044715A /* RealTimeGame+Friends.swift in Sources */,
+				0F5724D72A42C1020044715A /* AltheaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0F5724DF2A42C1030044715A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0F5724E02A42C1030044715A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0F5724E22A42C1030044715A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Althea/Preview Content\"";
+				DEVELOPMENT_TEAM = LM2SWXFAWT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MiniChallengeTeam6.Althea;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F5724E32A42C1030044715A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Althea/Preview Content\"";
+				DEVELOPMENT_TEAM = LM2SWXFAWT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MiniChallengeTeam6.Althea;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F5724CE2A42C1020044715A /* Build configuration list for PBXProject "Althea" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F5724DF2A42C1030044715A /* Debug */,
+				0F5724E02A42C1030044715A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F5724E12A42C1030044715A /* Build configuration list for PBXNativeTarget "Althea" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F5724E22A42C1030044715A /* Debug */,
+				0F5724E32A42C1030044715A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0F5724CB2A42C1020044715A /* Project object */;
+}
