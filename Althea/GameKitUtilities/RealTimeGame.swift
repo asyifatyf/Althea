@@ -48,6 +48,8 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     
     // Ready properties
     @Published var isReady: Bool = false
+    @Published var isOpponentReady: Bool = false
+    @Published var isOpponent1Ready: Bool = false
     
     /// The name of the match.
     var matchName: String {

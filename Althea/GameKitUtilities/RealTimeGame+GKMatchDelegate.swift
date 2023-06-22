@@ -42,7 +42,7 @@ extension RealTimeGame: GKMatchDelegate {
     func match(_ match: GKMatch, didFailWithError error: Error?) {
         print("\n\nMatch object fails with error: \(error!.localizedDescription)")
     }
-
+    
     /// Reinvites a player when they disconnect from the match.
     func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
         return false
@@ -50,7 +50,7 @@ extension RealTimeGame: GKMatchDelegate {
     
     /// Handles receiving a message from another player.
     /// - Tag:didReceiveData
-
+    
     
     /// Receive a message from one player to another.
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer){
@@ -58,7 +58,7 @@ extension RealTimeGame: GKMatchDelegate {
         let gameData = decode(matchData: data)
         opponent = myMatch?.players[0]
         opponent1 = myMatch?.players[1]
-
+        
         if player == opponent{
             if let score = gameData?.score{
                 opponentScore = score
@@ -70,7 +70,10 @@ extension RealTimeGame: GKMatchDelegate {
                 } else if opponentScore == 3{
                     cookName = roleName
                 }
+            }else if let playerReady = gameData?.playerReady{
+                isOpponentReady = playerReady
             }
+            
         } else if player == opponent1 {
             if let score = gameData?.score{
                 opponentScore1 = score
@@ -82,44 +85,45 @@ extension RealTimeGame: GKMatchDelegate {
                 } else if opponentScore1 == 3{
                     cookName = roleName
                 }
+            }else if let playerReady = gameData?.playerReady{
+                isOpponent1Ready = playerReady
             }
         }
     }
-
-//    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-//        // Decode the data representation of the game data.
-//        let gameData = decode(matchData: data)
-//
-//        // Update the interface from the game data.
-//        if let text = gameData?.message {
-//            // Add the message to the chat view.
-//            let message = Message(content: text, playerName: player.displayName, isLocalPlayer: false)
-//            messages.append(message)
-//        } else if let score = gameData?.score {
-//            // Show the opponent's score.
-//            opponentScore = score
-//        } else if let roleName = gameData?.roleName {
-//            // Show the opponent's score.
-//            if opponentScore == 1 {
-//                navigatorName = roleName
-//            } else if opponentScore == 2 {
-//                supplyName = roleName
-//            } else if opponentScore == 3 {
-//                cookName = roleName
-//            }
-//
-//        } else if let outcome = gameData?.outcome {
-//            // Show the outcome of the game.
-//            switch outcome {
-//            case "forfeit":
-//                opponentForfeit = true
-//            case "won":
-//                youWon = true
-//            case "lost":
-//                opponentWon = true
-//            default:
-//                return
-//            }
-//        }
-//    }
+    //    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+    //        // Decode the data representation of the game data.
+    //        let gameData = decode(matchData: data)
+    //
+    //        // Update the interface from the game data.
+    //        if let text = gameData?.message {
+    //            // Add the message to the chat view.
+    //            let message = Message(content: text, playerName: player.displayName, isLocalPlayer: false)
+    //            messages.append(message)
+    //        } else if let score = gameData?.score {
+    //            // Show the opponent's score.
+    //            opponentScore = score
+    //        } else if let roleName = gameData?.roleName {
+    //            // Show the opponent's score.
+    //            if opponentScore == 1 {
+    //                navigatorName = roleName
+    //            } else if opponentScore == 2 {
+    //                supplyName = roleName
+    //            } else if opponentScore == 3 {
+    //                cookName = roleName
+    //            }
+    //
+    //        } else if let outcome = gameData?.outcome {
+    //            // Show the outcome of the game.
+    //            switch outcome {
+    //            case "forfeit":
+    //                opponentForfeit = true
+    //            case "won":
+    //                youWon = true
+    //            case "lost":
+    //                opponentWon = true
+    //            default:
+    //                return
+    //            }
+    //        }
+    //    }
 }
