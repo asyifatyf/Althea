@@ -24,6 +24,9 @@
 		0F5724FB2A42C81F0044715A /* RealTimeGame+Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */; };
 		0F5724FD2A42C8570044715A /* RealTimeGame+VoiceChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */; };
 		0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */; };
+		248EA1F82A4457490083CA96 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F72A4457490083CA96 /* NavigatorView.swift */; };
+		248EA1FA2A44575B0083CA96 /* SupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F92A44575B0083CA96 /* SupplyView.swift */; };
+		248EA1FC2A44576A0083CA96 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1FB2A44576A0083CA96 /* CookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+Friends.swift"; sourceTree = "<group>"; };
 		0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+VoiceChat.swift"; sourceTree = "<group>"; };
 		0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+MatchData.swift"; sourceTree = "<group>"; };
+		248EA1F72A4457490083CA96 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
+		248EA1F92A44575B0083CA96 /* SupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyView.swift; sourceTree = "<group>"; };
+		248EA1FB2A44576A0083CA96 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				0F5724D62A42C1020044715A /* AltheaApp.swift */,
+				248EA1F72A4457490083CA96 /* NavigatorView.swift */,
+				248EA1F92A44575B0083CA96 /* SupplyView.swift */,
+				248EA1FB2A44576A0083CA96 /* CookView.swift */,
 				0F5724E82A42C3200044715A /* GameKitView */,
 				0F5724ED2A42C4B80044715A /* GameKitUtilities */,
 				0F5724DA2A42C1030044715A /* Assets.xcassets */,
@@ -192,10 +201,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				248EA1FA2A44575B0083CA96 /* SupplyView.swift in Sources */,
 				0F5724EC2A42C4580044715A /* MessageView.swift in Sources */,
 				0F5724D92A42C1020044715A /* HomeView.swift in Sources */,
 				0F5724EF2A42C4DA0044715A /* RealTimeGame.swift in Sources */,
 				0F5724E52A42C2BA0044715A /* RolePickView.swift in Sources */,
+				248EA1F82A4457490083CA96 /* NavigatorView.swift in Sources */,
 				0F5724F32A42C7450044715A /* RealTimeGame+LocalPlayerListener.swift in Sources */,
 				0F5724F72A42C7A50044715A /* RealTimeGame+GKMatchmakerView.swift in Sources */,
 				0F5724F92A42C7CE0044715A /* RealTimeGame+Messages.swift in Sources */,
@@ -204,6 +215,7 @@
 				0F5724F52A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift in Sources */,
 				0F5724F12A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift in Sources */,
 				0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */,
+				248EA1FC2A44576A0083CA96 /* CookView.swift in Sources */,
 				0F5724FD2A42C8570044715A /* RealTimeGame+VoiceChat.swift in Sources */,
 				0F5724FB2A42C81F0044715A /* RealTimeGame+Friends.swift in Sources */,
 				0F5724D72A42C1020044715A /* AltheaApp.swift in Sources */,

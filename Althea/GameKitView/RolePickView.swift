@@ -16,14 +16,12 @@ struct RolePickView: View {
     @State private var isButtonEnabled = true
     @State private var buttonText = "Ready"
     @State private var buttonColor = Color(.blue)
-    //    @State var navigatorName = ""
-    //    @State var supplyName = ""
-    //    @State var cookName = ""
+
     
     var body: some View {
         VStack {
             // Display the game title.
-            Text("Real-Time Game")
+            Text("Pick a Role")
                 .font(.title)
             HStack{
                 VStack{
@@ -33,11 +31,9 @@ struct RolePickView: View {
                                 game.roleNavigator()
                                 print(game.myScore)
                             }
-                            //                        self.navigatorName = game.myName
                             
                         }.disabled((game.isReady && game.myScore == 1) || (game.isOpponentReady && game.opponentScore == 1) || (game.isOpponent1Ready && game.opponentScore1 == 1))
                     Text("\(game.navigatorName)")
-                    //                    Text("\(game.opponentScore) + \(game.opponentName)")
                 }
                 VStack{
                     Rectangle()
@@ -45,12 +41,9 @@ struct RolePickView: View {
                         .onTapGesture {
                             if !game.isReady{
                                 game.roleSupply()
-                                print(game.myScore)
-                                
                             }
                         }.disabled((game.isReady && game.myScore == 2) || (game.isOpponentReady && game.opponentScore == 2) || (game.isOpponent1Ready && game.opponentScore1 == 2))
                     Text("\(game.supplyName)")
-                    //                    Text("\(game.opponentScore1) + \(game.opponentName1)")
                     
                 }
                 VStack{
