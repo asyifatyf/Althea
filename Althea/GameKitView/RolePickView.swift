@@ -28,8 +28,10 @@ struct RolePickView: View {
                         game.roleNavigator()
                         print(game.myScore)
 //                        self.navigatorName = game.myName
+                        
                     }
                     Text("\(game.navigatorName)")
+//                    Text("\(game.opponentScore) + \(game.opponentName)")
                 }
                 VStack{
                     Rectangle().foregroundColor(.green).frame(width: 150, height: 200).onTapGesture {
@@ -38,6 +40,8 @@ struct RolePickView: View {
 //                        self.supplyName = game.myName
                     }
                     Text("\(game.supplyName)")
+//                    Text("\(game.opponentScore1) + \(game.opponentName1)")
+
                 }
                 VStack{
                     Rectangle().foregroundColor(.blue).frame(width: 150, height: 200).onTapGesture {
@@ -48,6 +52,13 @@ struct RolePickView: View {
                     Text("\(game.cookName)")
                 }
             }
+            
+            Button {
+                game.ready()
+            } label: {
+                Text("Ready")
+            }
+
 //            Text("\(game.opponentScore)")
 //            Text("\(game.opponentName)")
 //            Text("\(game.opponentScore1)")
@@ -196,6 +207,6 @@ struct MessageButtonStyle: ButtonStyle {
 
 struct RolePickViewPreviews: PreviewProvider {
     static var previews: some View {
-        RolePickView(game: RealTimeGame())
+        RolePickView(game: RealTimeGame()).previewInterfaceOrientation(.landscapeLeft)
     }
 }

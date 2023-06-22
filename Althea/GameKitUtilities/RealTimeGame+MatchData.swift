@@ -18,6 +18,7 @@ struct GameData: Codable {
     var roleName: String?
     var message: String?
     var outcome: String?
+    var playerReady: Bool?
 }
 
 extension RealTimeGame {
@@ -42,6 +43,11 @@ extension RealTimeGame {
     }
     func encode(roleName: String) -> Data? {
         let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: roleName, message: nil, outcome: nil)
+        return encode(gameData: gameData)
+    }
+    
+    func encode(playerReady: Bool?) -> Data? {
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, outcome: nil, playerReady: playerReady)
         return encode(gameData: gameData)
     }
     

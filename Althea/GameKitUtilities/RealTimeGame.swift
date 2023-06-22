@@ -46,6 +46,9 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var supplyName = ""
     @Published var cookName = ""
     
+    // Ready properties
+    @Published var isReady: Bool = false
+    
     /// The name of the match.
     var matchName: String {
         "\(opponentName) Match"
@@ -195,6 +198,17 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
 //        reportProgress()
     }
     
+    func ready() {
+        isReady.toggle()
+        
+        do {
+            let data = encode(playerReady: isReady)
+            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+    
     /// Takes the player's turn.
     /// - Tag:takeAction
     func roleNavigator() {
@@ -305,6 +319,8 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
 //            }
 //        }
 //    }
+    
+
     
     /// Resets a match after players reach an outcome or cancel the game.
     func resetMatch() {

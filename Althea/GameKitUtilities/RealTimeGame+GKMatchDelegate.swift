@@ -50,40 +50,76 @@ extension RealTimeGame: GKMatchDelegate {
     
     /// Handles receiving a message from another player.
     /// - Tag:didReceiveData
-    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-        // Decode the data representation of the game data.
-        let gameData = decode(matchData: data)
-        
-        // Update the interface from the game data.
-        if let text = gameData?.message {
-            // Add the message to the chat view.
-            let message = Message(content: text, playerName: player.displayName, isLocalPlayer: false)
-            messages.append(message)
-        } else if let score = gameData?.score {
-            // Show the opponent's score.
-            opponentScore = score
-        } else if let roleName = gameData?.roleName {
-            // Show the opponent's score.
-            if opponentScore == 1 {
-                navigatorName = roleName
-            } else if opponentScore == 2 {
-                supplyName = roleName
-            } else if opponentScore == 3 {
-                cookName = roleName
-            }
 
-        } else if let outcome = gameData?.outcome {
-            // Show the outcome of the game.
-            switch outcome {
-            case "forfeit":
-                opponentForfeit = true
-            case "won":
-                youWon = true
-            case "lost":
-                opponentWon = true
-            default:
-                return
+    
+    /// Receive a message from one player to another.
+    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer){
+        myMatch = match
+        let gameData = decode(matchData: data)
+        opponent = myMatch?.players[0]
+        opponent1 = myMatch?.players[1]
+
+        if player == opponent{
+            if let score = gameData?.score{
+                opponentScore = score
+            } else if let roleName = gameData?.roleName{
+                if opponentScore == 1{
+                    navigatorName = roleName
+                } else if opponentScore == 2{
+                    supplyName = roleName
+                } else if opponentScore == 3{
+                    cookName = roleName
+                }
+            }
+        } else if player == opponent1 {
+            if let score = gameData?.score{
+                opponentScore1 = score
+            } else if let roleName = gameData?.roleName{
+                if opponentScore1 == 1{
+                    navigatorName = roleName
+                } else if opponentScore1 == 2{
+                    supplyName = roleName
+                } else if opponentScore1 == 3{
+                    cookName = roleName
+                }
             }
         }
     }
+
+//    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+//        // Decode the data representation of the game data.
+//        let gameData = decode(matchData: data)
+//
+//        // Update the interface from the game data.
+//        if let text = gameData?.message {
+//            // Add the message to the chat view.
+//            let message = Message(content: text, playerName: player.displayName, isLocalPlayer: false)
+//            messages.append(message)
+//        } else if let score = gameData?.score {
+//            // Show the opponent's score.
+//            opponentScore = score
+//        } else if let roleName = gameData?.roleName {
+//            // Show the opponent's score.
+//            if opponentScore == 1 {
+//                navigatorName = roleName
+//            } else if opponentScore == 2 {
+//                supplyName = roleName
+//            } else if opponentScore == 3 {
+//                cookName = roleName
+//            }
+//
+//        } else if let outcome = gameData?.outcome {
+//            // Show the outcome of the game.
+//            switch outcome {
+//            case "forfeit":
+//                opponentForfeit = true
+//            case "won":
+//                youWon = true
+//            case "lost":
+//                opponentWon = true
+//            default:
+//                return
+//            }
+//        }
+//    }
 }
