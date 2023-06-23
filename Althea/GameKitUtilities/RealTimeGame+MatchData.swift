@@ -17,8 +17,9 @@ struct GameData: Codable {
     var score: Int?
     var roleName: String?
     var message: String?
-    var outcome: String?
+//    var outcome: String?
     var playerReady: Bool?
+    var moveToScene: Bool?
 }
 
 extension RealTimeGame {
@@ -29,7 +30,7 @@ extension RealTimeGame {
     ///
     /// - Returns: A representation of game data that contains only the score.
     func encode(score: Int) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: score, message: nil, outcome: nil)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: score, message: nil)
         return encode(gameData: gameData)
     }
     
@@ -38,26 +39,30 @@ extension RealTimeGame {
     /// - Parameter message: The message that the local player enters.
     /// - Returns: A representation of game data that contains only a message.
     func encode(message: String?) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: message, outcome: nil)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: message)
         return encode(gameData: gameData)
     }
     func encode(roleName: String) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: roleName, message: nil, outcome: nil)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: roleName, message: nil)
         return encode(gameData: gameData)
     }
     
     func encode(playerReady: Bool?) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, outcome: nil, playerReady: playerReady)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, playerReady: playerReady)
+        return encode(gameData: gameData)
+    }
+    func encode(moveToScene : Bool?) -> Data? {
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, playerReady: nil, moveToScene: moveToScene)
         return encode(gameData: gameData)
     }
     
     /// Creates a data representation of the game outcome for sending to other players.
     ///
     /// - Returns: A representation of game data that contains only the game outcome.
-    func encode(outcome: String) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: nil, outcome: outcome)
-        return encode(gameData: gameData)
-    }
+//    func encode(outcome: String) -> Data? {
+//        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: nil, outcome: outcome)
+//        return encode(gameData: gameData)
+//    }
     
     /// Creates a data representation of game data for sending to other players.
     ///

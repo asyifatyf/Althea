@@ -21,11 +21,11 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var myMatch: GKMatch? = nil
 //    @Published var automatch = false
     
-    // Outcomes of the game for notifing players.
-    @Published var youForfeit = false
-    @Published var opponentForfeit = false
-    @Published var youWon = false
-    @Published var opponentWon = false
+//    // Outcomes of the game for notifing players.
+//    @Published var youForfeit = false
+//    @Published var opponentForfeit = false
+//    @Published var youWon = false
+//    @Published var opponentWon = false
     
     // The match information.
     @Published var myAvatar = Image(systemName: "person.crop.circle")
@@ -50,6 +50,8 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var isReady: Bool = false
     @Published var isOpponentReady: Bool = false
     @Published var isOpponent1Ready: Bool = false
+    @Published var numbersPlayerReady: Int = 0
+    @Published var isActive: Bool = false
     
     /// The name of the match.
     var matchName: String {
@@ -119,31 +121,6 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         }
     }
     
-    /// Starts the matchmaking process where GameKit finds a player for the match.
-    /// - Tag:findPlayer
-//    func findPlayer() async {
-//        let request = GKMatchRequest()
-//        request.minPlayers = 3
-//        request.maxPlayers = 3
-//        let match: GKMatch
-//
-//        // Start automatch.
-//        do {
-//            match = try await GKMatchmaker.shared().findMatch(for: request)
-//        } catch {
-//            print("Error: \(error.localizedDescription).")
-//            return
-//        }
-//
-//        // Start the game, although the automatch player hasn't connected yet.
-//        if !playingGame {
-//            startMyMatchWith(match: match)
-//        }
-//
-//        // Stop automatch.
-//        GKMatchmaker.shared().finishMatchmaking(for: match)
-//        automatch = false
-//    }
     
     /// Presents the matchmaker interface where the local player selects and sends an invitation to another player.
     /// - Tag:choosePlayer
@@ -202,10 +179,13 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     
     func ready() {
         isReady.toggle()
+        numbersPlayerReady += 1
         
         do {
             let data = encode(playerReady: isReady)
             try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
+            let pindah = encode(moveToScene: isActive)
+            try myMatch?.sendData(toAllPlayers: pindah!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
         }
@@ -277,52 +257,40 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     
     /// Quits a match and saves the game data.
     /// - Tag:endMatch
-    func endMatch() {
-        let myOutcome = myScore >= opponentScore ? "won" : "lost"
-        let opponentOutcome = opponentScore > myScore ? "won" : "lost"
-        
-        // Notify the opponent that they won or lost, depending on the score.
-        do {
-            let data = encode(outcome: opponentOutcome)
-            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-        } catch {
-            print("Error: \(error.localizedDescription).")
-        }
-        
-        // Notify the local player that they won or lost.
-        if myOutcome == "won" {
-            youWon = true
-        } else {
-            opponentWon = true
-        }
-    }
-    
-    /// Forfeits a match without saving the score.
-    /// - Tag:forfeitMatch
-    func forfeitMatch() {
-        // Notify the opponent that you forfeit the game.
-        do {
-            let data = encode(outcome: "forfeit")
-            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-        } catch {
-            print("Error: \(error.localizedDescription).")
-        }
-
-        youForfeit = true
-    }
-    
-    /// Saves the local player's score.
-    /// - Tag:saveScore
-//    func saveScore() {
-//        GKLeaderboard.submitScore(myScore, context: 0, player: GKLocalPlayer.local,
-//            leaderboardIDs: ["123"]) { error in
-//            if let error {
-//                print("Error: \(error.localizedDescription).")
-//            }
+//    func endMatch() {
+//        let myOutcome = myScore >= opponentScore ? "won" : "lost"
+//        let opponentOutcome = opponentScore > myScore ? "won" : "lost"
+//
+//        // Notify the opponent that they won or lost, depending on the score.
+//        do {
+//            let data = encode(outcome: opponentOutcome)
+//            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
+//        } catch {
+//            print("Error: \(error.localizedDescription).")
+//        }
+//
+//        // Notify the local player that they won or lost.
+//        if myOutcome == "won" {
+//            youWon = true
+//        } else {
+//            opponentWon = true
 //        }
 //    }
     
-
+    /// Forfeits a match without saving the score.
+    /// - Tag:forfeitMatch
+//    func forfeitMatch() {
+//        // Notify the opponent that you forfeit the game.
+//        do {
+//            let data = encode(outcome: "forfeit")
+//            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
+//        } catch {
+//            print("Error: \(error.localizedDescription).")
+//        }
+//
+//        youForfeit = true
+//    }
+    
     
     /// Resets a match after players reach an outcome or cancel the game.
     func resetMatch() {
@@ -338,10 +306,10 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         opponentAvatar1 = Image(systemName: "person.crop.circle")
         messages = []
         GKAccessPoint.shared.isActive = true
-        youForfeit = false
-        opponentForfeit = false
-        youWon = false
-        opponentWon = false
+//        youForfeit = false
+//        opponentForfeit = false
+//        youWon = false
+//        opponentWon = false
         
         // Reset the score.
         myScore = 0
@@ -349,38 +317,4 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         opponentScore1 = 0
     }
     
-    // Rewarding players with achievements.
-    
-    /// Reports the local player's progress toward an achievement.
-//    func reportProgress() {
-//        GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
-//            let achievementID = "1234"
-//            var achievement: GKAchievement? = nil
-//
-//            // Find an existing achievement.
-//            achievement = achievements?.first(where: { $0.identifier == achievementID })
-//
-//            // Otherwise, create a new achievement.
-//            if achievement == nil {
-//                achievement = GKAchievement(identifier: achievementID)
-//            }
-//
-//            // Create an array containing the achievement.
-//            let achievementsToReport: [GKAchievement] = [achievement!]
-//
-//            // Set the progress for the achievement.
-//            achievement?.percentComplete = achievement!.percentComplete + 10.0
-//
-//            // Report the progress to Game Center.
-//            GKAchievement.report(achievementsToReport, withCompletionHandler: {(error: Error?) in
-//                if let error {
-//                    print("Error: \(error.localizedDescription).")
-//                }
-//            })
-//
-//            if let error {
-//                print("Error: \(error.localizedDescription).")
-//            }
-//        })
-//    }
 }

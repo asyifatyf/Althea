@@ -72,6 +72,7 @@ extension RealTimeGame: GKMatchDelegate {
                 }
             }else if let playerReady = gameData?.playerReady{
                 isOpponentReady = playerReady
+                numbersPlayerReady += 1
             }
             
         } else if player == opponent1 {
@@ -87,6 +88,9 @@ extension RealTimeGame: GKMatchDelegate {
                 }
             }else if let playerReady = gameData?.playerReady{
                 isOpponent1Ready = playerReady
+                numbersPlayerReady += 1
+            } else if let moveToScene = gameData?.moveToScene{
+                isActive.toggle()
             }
         }
     }

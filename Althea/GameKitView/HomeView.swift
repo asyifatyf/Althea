@@ -9,7 +9,7 @@ import SwiftUI
 import GameKit
 
 struct HomeView: View {
-    @StateObject private var game = RealTimeGame()
+    @EnvironmentObject private var game: RealTimeGame
     @State private var showFriends = false
     
     var body: some View {
@@ -21,38 +21,12 @@ struct HomeView: View {
             Form {
                 Section("Start Game") {
                     Button("Choose Player") {
-//                        if game.automatch {
-//                            // Turn automatch off.
-//                            GKMatchmaker.shared().cancel()
-////                            game.automatch = false
-//                        }
                         game.choosePlayer()
                     }
                     
-//                    Toggle("Automatch", isOn: $game.automatch)
-//                    .foregroundColor(.blue)
-//                    .toggleStyle(SwitchToggleStyle(tint: .blue))
-//                    .onChange(of: game.automatch) { state in
-//                        if game.automatch {
-//                            // Turn automatch on.
-//                            Task {
-//                                await game.findPlayer()
-//                            }
-//                        } else {
-//                            // Turn automatch off.
-//                            GKMatchmaker.shared().cancel()
-//                        }
-//                    }
+
                 }
-//                Section("Game Center Data") {
-//                    Button("My Achievements") {
-//                        game.showProgress()
-//                    }
-//
-//                    Button("Top Scores") {
-//                        game.topScore()
-//                    }
-//                }
+
                 Section("Friends") {
                     Button("Add Friends") {
                         game.addFriends()
@@ -78,7 +52,7 @@ struct HomeView: View {
             
         // Display the game interface if a match is ongoing.
         .fullScreenCover(isPresented: $game.playingGame) {
-            RolePickView(game: game)
+            RolePickView()
         }
         
         // Display the local player's friends.
