@@ -17,9 +17,13 @@ struct GameData: Codable {
     var score: Int?
     var roleName: String?
     var message: String?
-//    var outcome: String?
     var playerReady: Bool?
     var moveToScene: Bool?
+}
+
+struct CharacterData: Codable {
+    var xCharacterPos: CGFloat?
+    var yCharacterPos: CGFloat?
 }
 
 extension RealTimeGame {
@@ -42,6 +46,16 @@ extension RealTimeGame {
         let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: message)
         return encode(gameData: gameData)
     }
+    
+    func encodeChar(xPosition: CGFloat?) -> Data? {
+        let characterData = CharacterData(xCharacterPos: xPosition)
+        return encodeChar(characterData: characterData)
+    }
+    func encodeChar(yPosition: CGFloat?) -> Data? {
+        let characterData = CharacterData(yCharacterPos: yPosition)
+        return encodeChar(characterData: characterData)
+    }
+    
     func encode(roleName: String) -> Data? {
         let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: roleName, message: nil)
         return encode(gameData: gameData)
@@ -80,6 +94,19 @@ extension RealTimeGame {
         }
     }
     
+    func encodeChar(characterData: CharacterData) -> Data? {
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+
+        do {
+            let data = try encoder.encode(characterData)
+            return data
+        } catch {
+            print("Error: \(error.localizedDescription).")
+            return nil
+        }
+    }
+    
     /// Decodes a data representation of match data from another player.
     ///
     /// - Parameter matchData: A data representation of the game data.
@@ -87,5 +114,10 @@ extension RealTimeGame {
     func decode(matchData: Data) -> GameData? {
         // Convert the data object to a game data object.
         return try? PropertyListDecoder().decode(GameData.self, from: matchData)
+    }
+    
+    func decodeChar(matchData: Data) -> CharacterData? {
+        // Convert the data object to a game data object.
+        return try? PropertyListDecoder().decode(CharacterData.self, from: matchData)
     }
 }

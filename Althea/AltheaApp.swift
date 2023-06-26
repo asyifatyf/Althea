@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct AltheaApp: App {
     var body: some Scene {
-        let game = RealTimeGame()
+        let game = RealTimeGame.shared
         WindowGroup {
             HomeView()
                 .environmentObject(game)

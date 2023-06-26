@@ -15,6 +15,7 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     // The local player's friends, if they grant access.
     @Published var friends: [Friend] = []
     
+    static let shared = RealTimeGame()
     // The game interface state.
     @Published var matchAvailable = false
     @Published var playingGame = false
@@ -52,6 +53,14 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var isOpponent1Ready: Bool = false
     @Published var numbersPlayerReady: Int = 0
     @Published var isActive: Bool = false
+    
+    //in game data
+    @Published var navigatorXPosition: CGFloat = 0
+    @Published var supplyXPosition: CGFloat = 0
+    @Published var cookXPosition: CGFloat = 0
+    @Published var navigatorYPosition: CGFloat = 0
+    @Published var supplyYPosition: CGFloat = 0
+    @Published var cookYPosition: CGFloat = 0
     
     /// The name of the match.
     var matchName: String {
@@ -250,6 +259,39 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
             try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
             let roleName = encode(roleName: cookName)
             try myMatch?.sendData(toAllPlayers: roleName!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+    
+    func sendNavigatorData(xPosition: CGFloat, yPosition: CGFloat) {
+        do {
+            let dataX = encodeChar(xPosition: xPosition)
+            try myMatch?.sendData(toAllPlayers: dataX!, with: GKMatch.SendDataMode.unreliable)
+            let dataY = encodeChar(yPosition: yPosition)
+            try myMatch?.sendData(toAllPlayers: dataY!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+
+    func sendSupplyData(xPosition: CGFloat, yPosition: CGFloat) {
+        do {
+            let dataX = encodeChar(xPosition: xPosition)
+            try myMatch?.sendData(toAllPlayers: dataX!, with: GKMatch.SendDataMode.unreliable)
+            let dataY = encodeChar(yPosition: yPosition)
+            try myMatch?.sendData(toAllPlayers: dataY!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+
+    func sendCookData(xPosition: CGFloat, yPosition: CGFloat) {
+        do {
+            let dataX = encodeChar(xPosition: xPosition)
+            try myMatch?.sendData(toAllPlayers: dataX!, with: GKMatch.SendDataMode.unreliable)
+            let dataY = encodeChar(yPosition: yPosition)
+            try myMatch?.sendData(toAllPlayers: dataY!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
         }

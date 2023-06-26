@@ -16,6 +16,7 @@ struct RolePickView: View {
 
     @State private var showMessages = false
     @State private var isChatting = false
+    
 //    @State var isActiveBind: Bool = false
         
     var body: some View {
@@ -30,6 +31,7 @@ struct RolePickView: View {
                 
                 if game.numbersPlayerReady == 3 {
                     let pageValue: Int = game.myScore
+                    
                     Text("sudah woi")
                     switch pageValue{
                     case 1:

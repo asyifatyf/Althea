@@ -10,6 +10,8 @@ import GameplayKit
 import SwiftUI
 
 struct NavigatorView: View {
+    @EnvironmentObject var game: RealTimeGame
+
     let gameView = NavigatorScene(fileNamed: "NavigatorScene")
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
@@ -21,6 +23,7 @@ struct NavigatorView: View {
                 .frame(width: 852,height: 415)
                 .previewInterfaceOrientation(.landscapeLeft)
             .edgesIgnoringSafeArea(.all)
+            .environmentObject(game)
         }.navigationBarBackButtonHidden(true)
     }
 }

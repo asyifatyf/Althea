@@ -11,11 +11,11 @@ import SwiftUI
 
 class NavigatorScene: SKScene {
     
-    @State var xPosition: CGFloat = 0
-    @State var yPosition: CGFloat = 0
-    var characterImage: SKSpriteNode = SKSpriteNode()
-    var characterImage1: SKSpriteNode = SKSpriteNode()
-    var characterImage2: SKSpriteNode = SKSpriteNode()
+    let game = RealTimeGame.shared
+    
+    var characterNavigator: SKSpriteNode = SKSpriteNode()
+    var characterSupply: SKSpriteNode = SKSpriteNode()
+    var characterCook: SKSpriteNode = SKSpriteNode()
     var sceneCamera = SKCameraNode()
     
     var padUp: SKSpriteNode = SKSpriteNode()
@@ -28,12 +28,13 @@ class NavigatorScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        
         self.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         scene?.scaleMode = .aspectFill
         
-        characterImage = childNode(withName: "down_stop_nav") as! SKSpriteNode
-        characterImage1 = childNode(withName: "down_stop_sup") as! SKSpriteNode
-        characterImage2 = childNode(withName: "down_stop") as! SKSpriteNode
+        characterNavigator = childNode(withName: "down_stop_nav") as! SKSpriteNode
+        characterSupply = childNode(withName: "down_stop_sup") as! SKSpriteNode
+        characterCook = childNode(withName: "down_stop") as! SKSpriteNode
         sceneCamera = childNode(withName: "sceneCamera") as! SKCameraNode
         
         padUp = childNode(withName: "padUp") as! SKSpriteNode
@@ -58,8 +59,8 @@ class NavigatorScene: SKScene {
             padRight.position = CGPoint(x: padUp.position.x - cameraOffset.x + 20, y: padUp.position.y - cameraOffset.y - 25)
             padLeft.position = CGPoint(x: padUp.position.x - cameraOffset.x - 30, y: padUp.position.y - cameraOffset.y - 25)
         }
-        let zoomInAction = SKAction.scale(to: 0.5, duration: 1)
-        sceneCamera.run(zoomInAction)
+//        let zoomInAction = SKAction.scale(to: 0.5, duration: 1)
+//        sceneCamera.run(zoomInAction)
         
     }
     
@@ -76,24 +77,24 @@ class NavigatorScene: SKScene {
     private func updateCharacter() {
         switch characterState {
         case .upStop:
-            characterImage.texture = SKTexture(imageNamed: "up_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
         case .upRun:
-            characterImage.texture = SKTexture(imageNamed: "up_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
             
         case .rightStop:
-            characterImage.texture = SKTexture(imageNamed: "right_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
         case .rightRun:
-            characterImage.texture = SKTexture(imageNamed: "right_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
             
         case .downStop:
-            characterImage.texture = SKTexture(imageNamed: "down_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
         case .downRun:
-            characterImage.texture = SKTexture(imageNamed: "down_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
             
         case .leftStop:
-            characterImage.texture = SKTexture(imageNamed: "left_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
         case .leftRun:
-            characterImage.texture = SKTexture(imageNamed: "left_stop_nav")
+            characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
             
         }
     }
@@ -101,22 +102,40 @@ class NavigatorScene: SKScene {
     private func moveCharacter(direction: Direction) {
         var xOffset: CGFloat = 0
         var yOffset: CGFloat = 0
-        xOffset = xPosition
-        yOffset = yPosition
+        
+        
         switch direction {
             
         case .up:
             yOffset = 20
+            game.sendNavigatorData(xPosition: xOffset, yPosition: yOffset)
+            
         case .right:
             xOffset = 20
+            game.sendNavigatorData(xPosition: xOffset, yPosition: yOffset)
+
         case .down:
             yOffset = -20
+            game.sendNavigatorData(xPosition: xOffset, yPosition: yOffset)
+
+
         case .left:
             xOffset = -20
+            game.sendNavigatorData(xPosition: xOffset, yPosition: yOffset)
+
         }
         
         let moveAction = SKAction.moveBy(x: xOffset, y: yOffset, duration: 0.5)
-        characterImage.run(moveAction)
+        characterNavigator.run(moveAction)
+        
+        
+//        let moveVectorSupply = CGVector(dx: game.supplyPosition.x, dy: game.supplyPosition.y)
+//        let moveSupply = SKAction.move(by: moveVectorSupply, duration: 0.5)
+//        characterSupply.run(moveSupply)
+//
+//        let moveVectorCook = CGVector(dx: game.cookPosition.x, dy: game.cookPosition.y)
+//        let moveCook = SKAction.move(by: moveVectorCook, duration: 0.5)
+//        characterCook.run(moveCook)
         
         NSLog("xOffset: %f, yOffset: %f", Double(xOffset), Double(yOffset))
     }
@@ -133,15 +152,38 @@ class NavigatorScene: SKScene {
             case "padUp":
                 moveCharacter(direction: .up)
                 characterState = .upRun
+                
+//                let position = characterNavigator.position
+//                game.sendNavigatorData(position: position)
+//                print(position)
+                
             case "padRight":
                 moveCharacter(direction: .right)
                 characterState = .rightRun
+                
+//                let position = characterNavigator.position
+//                game.sendNavigatorData(position: position)
+//                print(position)
+
+                
             case "padDown":
                 moveCharacter(direction: .down)
                 characterState = .downRun
+                
+//                let position = characterNavigator.position
+//                game.sendNavigatorData(position: position)
+//                print(position)
+
+                
             case "padLeft":
                 moveCharacter(direction: .left)
                 characterState = .leftRun
+                
+//                let position = characterNavigator.position
+//                game.sendNavigatorData(position: position)
+//                print(position)
+
+                
             default:
                 break
             }
@@ -152,6 +194,7 @@ class NavigatorScene: SKScene {
         
         handleTouch(touches)
         
+        
     }
     
     
@@ -161,22 +204,46 @@ class NavigatorScene: SKScene {
         
     }
     
+//    override func didFinishUpdate(){
+////        let supplyAction = SKAction.moveBy(x: game.supplyXPosition, y: game.supplyYPosition, duration: 0.5)
+////        print(game.supplyXPosition)
+////        print(game.supplyYPosition)
+////        characterSupply.run(supplyAction)
+////
+////        let cookAction = SKAction.moveBy(x: game.cookXPosition, y: game.cookYPosition, duration: 0.5)
+////        characterCook.run(cookAction)
+//    }
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        let offsetX = characterImage.position.x - size.width / 2
-        let offsetY = characterImage.position.y - size.height / 2
+        let offsetcamX = characterNavigator.position.x - size.width / 2
+        let offsetcamY = characterNavigator.position.y - size.height / 2
         
         // Adjust the camera's position to follow the characterImage
-        camera?.position.x += offsetX
-        camera?.position.y += offsetY
+        camera?.position.x += offsetcamX
+        camera?.position.y += offsetcamY
         
         // Adjust the position of other nodes to follow the camera movement
         
         for node in children{
             if node != padUp  && node != padDown && node != padRight && node != padLeft{
-                node.position.x -= offsetX
-                node.position.y -= offsetY
+                node.position.x -= offsetcamX
+                node.position.y -= offsetcamY
             }
         }
+        
+//        print("posisi supply: \(game.supplyPosition)")
+//        print("posisi cook: \(game.cookPosition)")
+
+//        let moveVectorSupply = CGVector(dx: game.supplyPosition.x, dy: game.supplyPosition.y)
+//        let moveSupply = SKAction.move(by: moveVectorSupply, duration: 2)
+//        characterSupply.run(moveSupply)
+//
+//        let moveVectorCook = CGVector(dx: game.cookPosition.x, dy: game.cookPosition.y)
+//        let moveCook = SKAction.move(by: moveVectorCook, duration: 2)
+//        characterCook.run(moveCook)
+        
+
+        
     }
 }

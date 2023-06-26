@@ -10,9 +10,11 @@ import GameplayKit
 import SwiftUI
 
 struct SupplyView: View {
+
     let gameView = SupplyScene(fileNamed: "SupplyScene")
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
+    @EnvironmentObject var game: RealTimeGame
 
 
     var body: some View {
@@ -21,6 +23,8 @@ struct SupplyView: View {
                 .frame(width: 852,height: 415)
                 .previewInterfaceOrientation(.landscapeLeft)
             .edgesIgnoringSafeArea(.all)
+            .environmentObject(game)
+
         }.navigationBarBackButtonHidden(true)
     }
 }

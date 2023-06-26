@@ -56,6 +56,7 @@ extension RealTimeGame: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer){
         myMatch = match
         let gameData = decode(matchData: data)
+        let characterData = decodeChar(matchData: data)
         opponent = myMatch?.players[0]
         opponent1 = myMatch?.players[1]
         
@@ -74,6 +75,34 @@ extension RealTimeGame: GKMatchDelegate {
                 isOpponentReady = playerReady
                 numbersPlayerReady += 1
             }
+            else if let moveToScene = gameData?.moveToScene{
+                isActive = true
+            }
+            else if let charPos = characterData?.xCharacterPos {
+                switch opponentScore {
+                case 1:
+                    navigatorXPosition = charPos
+                case 2:
+                    supplyXPosition = charPos
+                case 3:
+                    cookXPosition = charPos
+                default:
+                    return
+                }
+            }
+            else if let charPos = characterData?.yCharacterPos{
+                switch opponentScore1 {
+                case 1:
+                    navigatorYPosition = charPos
+                case 2:
+                    supplyYPosition = charPos
+                case 3:
+                    cookYPosition = charPos
+                default:
+                    return
+                }
+                
+            }
             
         } else if player == opponent1 {
             if let score = gameData?.score{
@@ -89,8 +118,35 @@ extension RealTimeGame: GKMatchDelegate {
             }else if let playerReady = gameData?.playerReady{
                 isOpponent1Ready = playerReady
                 numbersPlayerReady += 1
-            } else if let moveToScene = gameData?.moveToScene{
-                isActive.toggle()
+            }
+            else if let moveToScene = gameData?.moveToScene{
+                isActive = true
+            }
+            else if let charPos = characterData?.xCharacterPos{
+                switch opponentScore1 {
+                case 1:
+                    navigatorXPosition = charPos
+                case 2:
+                    supplyXPosition = charPos
+                case 3:
+                    cookXPosition = charPos
+                default:
+                    return
+                }
+                
+            }
+            else if let charPos = characterData?.yCharacterPos{
+                switch opponentScore1 {
+                case 1:
+                    navigatorYPosition = charPos
+                case 2:
+                    supplyYPosition = charPos
+                case 3:
+                    cookYPosition = charPos
+                default:
+                    return
+                }
+                
             }
         }
     }
