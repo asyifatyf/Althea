@@ -108,19 +108,21 @@ class SupplyScene: SKScene {
             
         case .up:
             yOffset = 20
-            game.sendSupplyData(xPosition: xOffset, yPosition: yOffset)
+            
+            game.sendSupplyData(xPosition: 0, yPosition: 20)
+            
             
         case .right:
             xOffset = 20
-            game.sendSupplyData(xPosition: xOffset, yPosition: yOffset)
+            game.sendSupplyData(xPosition:  20, yPosition: 0)
 
         case .down:
             yOffset = -20
-            game.sendSupplyData(xPosition: xOffset, yPosition: yOffset)
+            game.sendSupplyData(xPosition:  0, yPosition: -20)
 
         case .left:
             xOffset = -20
-            game.sendSupplyData(xPosition: xOffset, yPosition: yOffset)
+            game.sendSupplyData(xPosition:  -20, yPosition:  0)
 
         }
         
@@ -202,13 +204,6 @@ class SupplyScene: SKScene {
         
     }
     
-//    override func didFinishUpdate() {
-////        let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
-////        characterNavigator.run(navigatorAction)
-////        
-////        let cookAction = SKAction.moveBy(x: game.cookXPosition, y: game.cookYPosition, duration: 0.5)
-////        characterCook.run(cookAction)
-//    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -228,6 +223,27 @@ class SupplyScene: SKScene {
             }
         }
         
+        while game.isNavigatorData{
+            let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
+            characterNavigator.run(navigatorAction)
+            
+            game.isNavigatorData = false
+        }
+        
+        while game.isCookData{
+            let cookAction = SKAction.moveBy(x: game.cookXPosition, y: game.cookYPosition, duration: 0.5)
+            characterCook.run(cookAction)
+            
+            game.isCookData = false
+        }
+        
+//        while game.isDataChanged1 || game .isDataChanged2 {
+//
+//        
+//            
+//            game.isDataChanged1 = false
+//            game.isDataChanged2 = false
+//        }
         
 //        print("posisi navigator: \(game.navigatorPosition)")
 //        print("posisi cook: \(game.cookPosition)")
@@ -239,7 +255,7 @@ class SupplyScene: SKScene {
 //        let moveVectorCook = CGVector(dx: game.cookPosition.x, dy: game.cookPosition.y)
 //        let moveCook = SKAction.move(by: moveVectorCook, duration: 2)
 //        characterCook.run(moveCook)
-        
+//
 //        characterNavigator.position = game.navigatorPosition
 //        characterCook.position = game.cookPosition
         

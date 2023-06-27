@@ -107,18 +107,18 @@ class CookScene: SKScene {
             
         case .up:
             yOffset = 20
-            game.sendCookData(xPosition: xOffset, yPosition: yOffset)
+            game.sendCookData(xPosition: 0, yPosition: 20)
         case .right:
             xOffset = 20
-            game.sendCookData(xPosition: xOffset, yPosition: yOffset)
+            game.sendCookData(xPosition: 20, yPosition: 0)
 
         case .down:
             yOffset = -20
-            game.sendCookData(xPosition: xOffset, yPosition: yOffset)
+            game.sendCookData(xPosition: 0, yPosition: -20)
 
         case .left:
             xOffset = -20
-            game.sendCookData(xPosition: xOffset, yPosition: yOffset)
+            game.sendCookData(xPosition: -20, yPosition: 0)
         }
         
         let moveAction = SKAction.moveBy(x: xOffset, y: yOffset, duration: 0.5)
@@ -199,13 +199,7 @@ class CookScene: SKScene {
         
     }
     
-//    override func didFinishUpdate() {
-////        let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
-////        characterNavigator.run(navigatorAction)
-////
-////        let supplyAction = SKAction.moveBy(x: game.supplyXPosition, y: game.supplyYPosition, duration: 0.5)
-////        characterSupply.run(supplyAction)
-//    }
+
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -224,6 +218,26 @@ class CookScene: SKScene {
                 node.position.y -= offsetcamY
             }
         }
+        
+        while game.isNavigatorData{
+            let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
+            characterNavigator.run(navigatorAction)
+            game.isNavigatorData = false
+        }
+        while game.isSupplyData{
+            let supplyAction = SKAction.moveBy(x: game.supplyXPosition, y: game.supplyYPosition, duration: 0.5)
+            characterSupply.run(supplyAction)
+            game.isSupplyData = false
+        }
+        
+//        while game.isDataChanged1 || game.isDataChanged2 {
+
+//
+
+//
+//            game.isDataChanged1 = false
+//            game.isDataChanged2 = false
+//        }
         
 //        print("posisi navigator: \(game.navigatorPosition)")
 //        print("posisi supply: \(game.supplyPosition)")

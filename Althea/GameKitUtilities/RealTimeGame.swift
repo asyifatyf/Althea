@@ -19,14 +19,7 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     // The game interface state.
     @Published var matchAvailable = false
     @Published var playingGame = false
-    @Published var myMatch: GKMatch? = nil
-//    @Published var automatch = false
-    
-//    // Outcomes of the game for notifing players.
-//    @Published var youForfeit = false
-//    @Published var opponentForfeit = false
-//    @Published var youWon = false
-//    @Published var opponentWon = false
+    @Published var myMatch: GKMatch? = nil 
     
     // The match information.
     @Published var myAvatar = Image(systemName: "person.crop.circle")
@@ -36,8 +29,7 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var opponent1 : GKPlayer? = nil
     @Published var messages: [Message] = []
     @Published var myScore = 0
-    @Published var opponentScore = 0
-    @Published var opponentScore1 = 0
+    @Published var myRole = ""
     
     // The voice chat properties.
     @Published var voiceChat: GKVoiceChat? = nil
@@ -48,9 +40,9 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var cookName = ""
     
     // Ready properties
-    @Published var isReady: Bool = false
-    @Published var isOpponentReady: Bool = false
-    @Published var isOpponent1Ready: Bool = false
+    @Published var isNavigatorReady: Bool = false
+    @Published var isSupplyReady: Bool = false
+    @Published var isCookReady: Bool = false
     @Published var numbersPlayerReady: Int = 0
     @Published var isActive: Bool = false
     
@@ -61,6 +53,11 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var navigatorYPosition: CGFloat = 0
     @Published var supplyYPosition: CGFloat = 0
     @Published var cookYPosition: CGFloat = 0
+    
+    @Published var isNavigatorData: Bool = false
+    @Published var isSupplyData: Bool = false
+    @Published var isCookData: Bool = false
+    
     
     /// The name of the match.
     var matchName: String {
@@ -76,9 +73,9 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     var opponentName: String {
         opponent?.displayName ?? "Invitation Pending"
     }
-    var opponentName1: String {
-        opponent1?.displayName ?? "Invitation Pending"
-    }
+//    var opponentName1: String {
+//        opponent1?.displayName ?? "Invitation Pending"
+//    }
     
     /// The root view controller of the window.
     var rootViewController: UIViewController? {
@@ -187,17 +184,48 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     }
     
     func ready() {
-        isReady.toggle()
+//        isReady.toggle()
         numbersPlayerReady += 1
-        
-        do {
-            let data = encode(playerReady: isReady)
-            try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-            let pindah = encode(moveToScene: isActive)
-            try myMatch?.sendData(toAllPlayers: pindah!, with: GKMatch.SendDataMode.unreliable)
-        } catch {
-            print("Error: \(error.localizedDescription).")
+        switch myRole{
+        case "navigator":
+            isNavigatorReady = true
+            
+            do {
+                let ready = encode(playerReady: isNavigatorReady)
+                try myMatch?.sendData(toAllPlayers: ready!, with: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
+        case "supply":
+            isSupplyReady = true
+            do {
+                let ready = encode(playerReady: isSupplyReady)
+                try myMatch?.sendData(toAllPlayers: ready!, with: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
+        case "cook":
+            isCookReady = true
+            do {
+                let ready = encode(playerReady: isCookReady)
+                try myMatch?.sendData(toAllPlayers: ready!, with: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
+        default:
+            return
         }
+        
+        if numbersPlayerReady == 3 {
+            isActive = true
+            do {
+                let pindah = encode(moveToScene: isActive)
+                try myMatch?.sendData(toAllPlayers: pindah!, with: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
+        }
+
     }
     
     /// Takes the player's turn.
@@ -206,18 +234,13 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         // Take your turn by incrementing the counter.
         myScore = 1
         navigatorName = myName
+        myRole = "navigator"
         
-//        // If your score is 10 points higher or reaches the maximum, you win the match.
-//        if (myScore - opponentScore == 10) || (myScore == 100) {
-//            endMatch()
-//            return
-//        }
-        
-        // Otherwise, send the game data to the other player.
+
         do {
             let data = encode(score: myScore)
             try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-            let roleName = encode(roleName: navigatorName)
+            let roleName = encode(navigatorName: navigatorName)
             try myMatch?.sendData(toAllPlayers: roleName!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
@@ -227,17 +250,12 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         // Take your turn by incrementing the counter.
         myScore = 2
         supplyName = myName
-//        // If your score is 10 points higher or reaches the maximum, you win the match.
-//        if (myScore - opponentScore == 10) || (myScore == 100) {
-//            endMatch()
-//            return
-//        }
-        
-        // Otherwise, send the game data to the other player.
+        myRole = "supply"
+
         do {
             let data = encode(score: myScore)
             try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-            let roleName = encode(roleName: supplyName)
+            let roleName = encode(supplyName: supplyName)
             try myMatch?.sendData(toAllPlayers: roleName!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
@@ -247,17 +265,12 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         // Take your turn by incrementing the counter.
         myScore = 3
         cookName = myName
-//        // If your score is 10 points higher or reaches the maximum, you win the match.
-//        if (myScore - opponentScore == 10) || (myScore == 100) {
-//            endMatch()
-//            return
-//        }
-        
-        // Otherwise, send the game data to the other player.
+        myRole = "cook"
+
         do {
             let data = encode(score: myScore)
             try myMatch?.sendData(toAllPlayers: data!, with: GKMatch.SendDataMode.unreliable)
-            let roleName = encode(roleName: cookName)
+            let roleName = encode(cookName: cookName)
             try myMatch?.sendData(toAllPlayers: roleName!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
@@ -275,6 +288,7 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         }
     }
 
+    
     func sendSupplyData(xPosition: CGFloat, yPosition: CGFloat) {
         do {
             let dataX = encodeChar(xPosition: xPosition)
@@ -355,8 +369,6 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         
         // Reset the score.
         myScore = 0
-        opponentScore = 0
-        opponentScore1 = 0
     }
     
 }

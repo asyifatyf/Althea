@@ -15,7 +15,9 @@ struct GameData: Codable {
     var matchName: String
     var playerName: String
     var score: Int?
-    var roleName: String?
+    var navigatorName: String?
+    var supplyName: String?
+    var cookName: String?
     var message: String?
     var playerReady: Bool?
     var moveToScene: Bool?
@@ -24,6 +26,7 @@ struct GameData: Codable {
 struct CharacterData: Codable {
     var xCharacterPos: CGFloat?
     var yCharacterPos: CGFloat?
+
 }
 
 extension RealTimeGame {
@@ -55,18 +58,27 @@ extension RealTimeGame {
         let characterData = CharacterData(yCharacterPos: yPosition)
         return encodeChar(characterData: characterData)
     }
+
     
-    func encode(roleName: String) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: roleName, message: nil)
+    func encode(navigatorName: String) -> Data? {
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, navigatorName: navigatorName, message: nil)
+        return encode(gameData: gameData)
+    }
+    func encode(supplyName: String) -> Data? {
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, supplyName: supplyName, message: nil)
+        return encode(gameData: gameData)
+    }
+    func encode(cookName: String) -> Data? {
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, cookName: cookName, message: nil)
         return encode(gameData: gameData)
     }
     
     func encode(playerReady: Bool?) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, playerReady: playerReady)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: nil, playerReady: playerReady)
         return encode(gameData: gameData)
     }
     func encode(moveToScene : Bool?) -> Data? {
-        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, roleName: nil, message: nil, playerReady: nil, moveToScene: moveToScene)
+        let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, message: nil, playerReady: nil, moveToScene: moveToScene)
         return encode(gameData: gameData)
     }
     

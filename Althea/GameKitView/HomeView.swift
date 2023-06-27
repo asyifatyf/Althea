@@ -13,36 +13,64 @@ struct HomeView: View {
     @State private var showFriends = false
     
     var body: some View {
-        VStack {
+        ZStack{
+            Image("homePageBg").resizable()
+                .scaledToFill()
+                .scaleEffect(1.2)
+        VStack{
             // Display the game title.
-            Text("Real-Time Game")
+            Text("AlTHEA")
                 .font(.title)
                 .padding()
-            Form {
-                Section("Start Game") {
-                    Button("Choose Player") {
-                        game.choosePlayer()
-                    }
-                    
-
+            Spacer()
+            Button {
+                game.choosePlayer()
+            } label: {
+                Text("START")
+            }.disabled(!game.matchAvailable)
+            
+            Button {
+                game.addFriends()
+            } label: {
+                Text("ADD FRIENDS")
+            }.disabled(!game.matchAvailable)
+           
+            Button {
+                Task{
+                    await game.accessFriends()
+                    showFriends = true
+                    GKAccessPoint.shared.isActive = false
                 }
+            } label: {
+                Text("MY FRIENDS")
+            }.disabled(!game.matchAvailable)
 
-                Section("Friends") {
-                    Button("Add Friends") {
-                        game.addFriends()
-                    }
-                    
-                    Button("Access Friends") {
-                        Task {
-                            await game.accessFriends()
-                            showFriends = true
-                            GKAccessPoint.shared.isActive = false
-                        }
-                    }
-                }
-            }
-            .disabled(!game.matchAvailable)
+//            Form {
+//                Section("Start Game") {
+//                    Button("Choose Player") {
+//                        game.choosePlayer()
+//                    }
+//
+//
+//                }
+//
+//                Section("Friends") {
+//                    Button("Add Friends") {
+//                        game.addFriends()
+//                    }
+//
+//                    Button("Access Friends") {
+//                        Task {
+//                            await game.accessFriends()
+//                            showFriends = true
+//                            GKAccessPoint.shared.isActive = false
+//                        }
+//                    }
+//                }
+//            }
+//            .disabled(!game.matchAvailable)
         }
+    }
         // Authenticate the local player when the game first launches.
         .onAppear {
             if !game.playingGame {
@@ -67,7 +95,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(RealTimeGame())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
 

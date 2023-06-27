@@ -10,29 +10,45 @@ import SwiftUI
 struct ReadyButtonComponent: View {
     
     @EnvironmentObject var game: RealTimeGame
+    
+    @State private var isButtonClicked = false
+    @State var readyStatus: Bool = false
 
-    @State private var buttonText = "Ready"
-    @State private var buttonColor = Color(.blue)
+//    @State private var buttonImage = Image("ReadyButton")
+//    @State private var buttonColor = Color(.blue)
     
     var body: some View {
         Button(action: {
+            isButtonClicked.toggle()
             game.ready()
-            print(game.isReady)
-            buttonText = "Clicked"
-            buttonColor = Color(.gray)
+            switch game.myRole{
+            case "navigator":
+                readyStatus = game.isNavigatorReady
+            case "supply":
+                readyStatus = game.isSupplyReady
+            case "cook":
+                readyStatus = game.isCookReady
+            default:
+                return
+            }
+            
         })
         {
-            Text(buttonText)
-                .padding()
-                .background(buttonColor)
-                .foregroundColor(.white)
-                .cornerRadius(10)
+            Image(isButtonClicked ? "buttonWaiting" : "readyButton")
+
+//                .padding()
+//                .background(buttonColor)
+//                .foregroundColor(.white)
+//                .cornerRadius(10)
         }
-        .disabled(game.isReady)    }
+        .disabled(readyStatus)
+        
+    }
 }
 
-//struct ReadyButtonComponent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReadyButtonComponent()
-//    }
-//}
+struct ReadyButtonComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        ReadyButtonComponent()
+            .environmentObject(RealTimeGame())
+    }
+}

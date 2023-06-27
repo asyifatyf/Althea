@@ -57,133 +57,169 @@ extension RealTimeGame: GKMatchDelegate {
         myMatch = match
         let gameData = decode(matchData: data)
         let characterData = decodeChar(matchData: data)
-        opponent = myMatch?.players[0]
-        opponent1 = myMatch?.players[1]
         
-        if player == opponent{
-            if let score = gameData?.score{
-                opponentScore = score
-            } else if let roleName = gameData?.roleName{
-                if opponentScore == 1{
-                    navigatorName = roleName
-                } else if opponentScore == 2{
-                    supplyName = roleName
-                } else if opponentScore == 3{
-                    cookName = roleName
-                }
-            }else if let playerReady = gameData?.playerReady{
-                isOpponentReady = playerReady
+        if let receiveNavigatorName = gameData?.navigatorName{
+            navigatorName = receiveNavigatorName
+        } else if let receiveSupplyName = gameData?.supplyName{
+            supplyName = receiveSupplyName
+        } else if let receiveCookName = gameData?.cookName{
+            cookName = receiveCookName
+        }
+        
+        
+        if player.alias == navigatorName {
+            if let playerReady = gameData?.playerReady{
+                isNavigatorReady = playerReady
                 numbersPlayerReady += 1
-            }
-            else if let moveToScene = gameData?.moveToScene{
-                isActive = true
-            }
-            else if let charPos = characterData?.xCharacterPos {
-                switch opponentScore {
-                case 1:
-                    navigatorXPosition = charPos
-                case 2:
-                    supplyXPosition = charPos
-                case 3:
-                    cookXPosition = charPos
-                default:
-                    return
-                }
-            }
-            else if let charPos = characterData?.yCharacterPos{
-                switch opponentScore1 {
-                case 1:
-                    navigatorYPosition = charPos
-                case 2:
-                    supplyYPosition = charPos
-                case 3:
-                    cookYPosition = charPos
-                default:
-                    return
-                }
-                
+            } else if let moveToScene = gameData?.moveToScene{
+                isActive = moveToScene
+            } else if let xCharPos = characterData?.xCharacterPos{
+                navigatorXPosition = xCharPos
+                isNavigatorData = true
+            } else if let yCharPos = characterData?.yCharacterPos{
+                navigatorYPosition = yCharPos
+                isNavigatorData = true
             }
             
-        } else if player == opponent1 {
-            if let score = gameData?.score{
-                opponentScore1 = score
-            } else if let roleName = gameData?.roleName{
-                if opponentScore1 == 1{
-                    navigatorName = roleName
-                } else if opponentScore1 == 2{
-                    supplyName = roleName
-                } else if opponentScore1 == 3{
-                    cookName = roleName
-                }
-            }else if let playerReady = gameData?.playerReady{
-                isOpponent1Ready = playerReady
+        } else if player.alias == supplyName {
+            if let playerReady = gameData?.playerReady{
+                isSupplyReady = playerReady
                 numbersPlayerReady += 1
+            } else if let moveToScene = gameData?.moveToScene{
+                isActive = moveToScene
+            } else if let xCharPos = characterData?.xCharacterPos{
+                supplyXPosition = xCharPos
+                isSupplyData = true
+            } else if let yCharPos = characterData?.yCharacterPos{
+                supplyYPosition = yCharPos
+                isSupplyData = true
             }
-            else if let moveToScene = gameData?.moveToScene{
-                isActive = true
-            }
-            else if let charPos = characterData?.xCharacterPos{
-                switch opponentScore1 {
-                case 1:
-                    navigatorXPosition = charPos
-                case 2:
-                    supplyXPosition = charPos
-                case 3:
-                    cookXPosition = charPos
-                default:
-                    return
-                }
-                
-            }
-            else if let charPos = characterData?.yCharacterPos{
-                switch opponentScore1 {
-                case 1:
-                    navigatorYPosition = charPos
-                case 2:
-                    supplyYPosition = charPos
-                case 3:
-                    cookYPosition = charPos
-                default:
-                    return
-                }
-                
+            
+        } else if player.alias == cookName {
+            if let playerReady = gameData?.playerReady{
+                isCookReady = playerReady
+                numbersPlayerReady += 1
+            } else if let moveToScene = gameData?.moveToScene{
+                isActive = moveToScene
+            } else if let xCharPos = characterData?.xCharacterPos{
+                cookXPosition = xCharPos
+                isCookData = true
+            } else if let yCharPos = characterData?.yCharacterPos{
+                cookYPosition = yCharPos
+                isCookData = true
             }
         }
+        
+
+        
+        
+//        if player == opponent{
+//            if let score = gameData?.score{
+//                opponentScore = score
+//            } else if let roleName = gameData?.roleName{
+//                if opponentScore == 1{
+//                    navigatorName = roleName
+//                } else if opponentScore == 2{
+//                    supplyName = roleName
+//                } else if opponentScore == 3{
+//                    cookName = roleName
+//                }
+//            }else if let playerReady = gameData?.playerReady{
+//                isOpponentReady = playerReady
+//                numbersPlayerReady += 1
+//            }
+//            else if let moveToScene = gameData?.moveToScene{
+//                isActive = true
+//            }
+//            else if let charPos = characterData?.xCharacterPos {
+//                switch opponentScore {
+//                case 1:
+//                    navigatorXPosition = charPos
+//                    isDataChanged1 = true
+//                case 2:
+//                    supplyXPosition = charPos
+//                    isDataChanged1 = true
+//                case 3:
+//                    cookXPosition = charPos
+//                    isDataChanged1 = true
+//                default:
+//                    return
+//                }
+//            }
+//            else if let charPos = characterData?.yCharacterPos{
+//                switch opponentScore1 {
+//                case 1:
+//                    navigatorYPosition = charPos
+//                    isDataChanged1 = true
+//                case 2:
+//                    supplyYPosition = charPos
+//                    isDataChanged1 = true
+//
+//                case 3:
+//                    cookYPosition = charPos
+//                    isDataChanged1 = true
+//                default:
+//                    return
+//                }
+//
+//            }
+//
+//        } else if player == opponent1 {
+//            if let score = gameData?.score{
+//                opponentScore1 = score
+//            } else if let roleName = gameData?.roleName{
+//                if opponentScore1 == 1{
+//                    navigatorName = roleName
+//                } else if opponentScore1 == 2{
+//                    supplyName = roleName
+//                } else if opponentScore1 == 3{
+//                    cookName = roleName
+//                }
+//            }else if let playerReady = gameData?.playerReady{
+//                isOpponent1Ready = playerReady
+//                numbersPlayerReady += 1
+//            }
+//            else if let moveToScene = gameData?.moveToScene{
+//                isActive = true
+//            }
+//            else if let charPos = characterData?.xCharacterPos{
+//                switch opponentScore1 {
+//                case 1:
+//                    navigatorXPosition = charPos
+//                    isDataChanged2 = true
+//
+//                case 2:
+//                    supplyXPosition = charPos
+//                    isDataChanged2 = true
+//
+//                case 3:
+//                    cookXPosition = charPos
+//                    isDataChanged2 = true
+//
+//                default:
+//                    return
+//                }
+//
+//            }
+//            else if let charPos = characterData?.yCharacterPos{
+//                switch opponentScore1 {
+//                case 1:
+//                    navigatorYPosition = charPos
+//                    isDataChanged2 = true
+//
+//                case 2:
+//                    supplyYPosition = charPos
+//                    isDataChanged2 = true
+//
+//                case 3:
+//                    cookYPosition = charPos
+//                    isDataChanged2 = true
+//
+//                default:
+//                    return
+//                }
+//
+//            }
+//        }
     }
-    //    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-    //        // Decode the data representation of the game data.
-    //        let gameData = decode(matchData: data)
-    //
-    //        // Update the interface from the game data.
-    //        if let text = gameData?.message {
-    //            // Add the message to the chat view.
-    //            let message = Message(content: text, playerName: player.displayName, isLocalPlayer: false)
-    //            messages.append(message)
-    //        } else if let score = gameData?.score {
-    //            // Show the opponent's score.
-    //            opponentScore = score
-    //        } else if let roleName = gameData?.roleName {
-    //            // Show the opponent's score.
-    //            if opponentScore == 1 {
-    //                navigatorName = roleName
-    //            } else if opponentScore == 2 {
-    //                supplyName = roleName
-    //            } else if opponentScore == 3 {
-    //                cookName = roleName
-    //            }
-    //
-    //        } else if let outcome = gameData?.outcome {
-    //            // Show the outcome of the game.
-    //            switch outcome {
-    //            case "forfeit":
-    //                opponentForfeit = true
-    //            case "won":
-    //                youWon = true
-    //            case "lost":
-    //                opponentWon = true
-    //            default:
-    //                return
-    //            }
-    //        }
-    //    }
 }
