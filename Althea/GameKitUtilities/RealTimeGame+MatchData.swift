@@ -26,7 +26,9 @@ struct GameData: Codable {
 struct CharacterData: Codable {
     var xCharacterPos: CGFloat?
     var yCharacterPos: CGFloat?
-
+    var characterOrientation: String?
+    var objectType: String? //variable untuk bom dan treasure
+    var characterEnergy: Int? //variable untuk health
 }
 
 extension RealTimeGame {
@@ -58,8 +60,22 @@ extension RealTimeGame {
         let characterData = CharacterData(yCharacterPos: yPosition)
         return encodeChar(characterData: characterData)
     }
-
     
+    func encodeChar(characterOrientation: String?) -> Data? {
+        let characterData = CharacterData(characterOrientation: characterOrientation)
+        return encodeChar(characterData: characterData)
+    }
+    
+    func encodeChar(objectType: String?) -> Data? {
+        let characterData = CharacterData(objectType: objectType)
+        return encodeChar(characterData: characterData)
+    }
+    
+    func encodeChar(characterEnergy: Int?) -> Data? {
+        let characterData = CharacterData(characterEnergy: characterEnergy)
+        return encodeChar(characterData: characterData)
+    }
+
     func encode(navigatorName: String) -> Data? {
         let gameData = GameData(matchName: matchName, playerName: GKLocalPlayer.local.displayName, score: nil, navigatorName: navigatorName, message: nil)
         return encode(gameData: gameData)

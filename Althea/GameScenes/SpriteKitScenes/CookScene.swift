@@ -78,23 +78,35 @@ class CookScene: SKScene {
         switch characterState {
         case .upStop:
             characterCook.texture = SKTexture(imageNamed: "up_stop")
+            game.sendCookOrientation(cookOrientation: "upStop")
+            
         case .upRun:
             characterCook.texture = SKTexture(imageNamed: "up_run")
+            game.sendCookOrientation(cookOrientation: "upRun")
             
         case .rightStop:
             characterCook.texture = SKTexture(imageNamed: "right_stop")
+            game.sendCookOrientation(cookOrientation: "rightStop")
+            
         case .rightRun:
             characterCook.texture = SKTexture(imageNamed: "right_run")
+            game.sendCookOrientation(cookOrientation: "rightRun")
             
         case .downStop:
             characterCook.texture = SKTexture(imageNamed: "down_stop")
+            game.sendCookOrientation(cookOrientation: "downStop")
+            
         case .downRun:
             characterCook.texture = SKTexture(imageNamed: "down_run")
+            game.sendCookOrientation(cookOrientation: "downRun")
             
         case .leftStop:
             characterCook.texture = SKTexture(imageNamed: "left_stop")
+            game.sendCookOrientation(cookOrientation: "leftStop")
+            
         case .leftRun:
             characterCook.texture = SKTexture(imageNamed: "left_run")
+            game.sendCookOrientation(cookOrientation: "leftRun")
             
         }
     }
@@ -222,11 +234,71 @@ class CookScene: SKScene {
         while game.isNavigatorData{
             let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
             characterNavigator.run(navigatorAction)
+            
+            switch game.navigatorOrientation {
+            case "upStop":
+                characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
+                
+            case "upRun":
+                characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
+                
+            case "rightStop":
+                characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
+                
+            case "rightRun":
+                characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
+                
+            case "downStop":
+                characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
+                
+            case "downRun":
+                characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
+                
+            case "leftStop":
+                characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
+                
+            case "leftRun":
+                characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
+                
+            default:
+                return
+            }
+            
             game.isNavigatorData = false
         }
         while game.isSupplyData{
             let supplyAction = SKAction.moveBy(x: game.supplyXPosition, y: game.supplyYPosition, duration: 0.5)
             characterSupply.run(supplyAction)
+            
+            switch game.supplyOrientation {
+            case "upStop":
+                characterSupply.texture = SKTexture(imageNamed: "up_stop_sup")
+                
+            case "upRun":
+                characterSupply.texture = SKTexture(imageNamed: "up_stop_sup")
+                
+            case "rightStop":
+                characterSupply.texture = SKTexture(imageNamed: "right_stop_sup")
+                
+            case "rightRun":
+                characterSupply.texture = SKTexture(imageNamed: "right_stop_sup")
+                
+            case "downStop":
+                characterSupply.texture = SKTexture(imageNamed: "down_stop_sup")
+                
+            case "downRun":
+                characterSupply.texture = SKTexture(imageNamed: "down_stop_sup")
+                
+            case "leftStop":
+                characterSupply.texture = SKTexture(imageNamed: "left_stop_sup")
+                
+            case "leftRun":
+                characterSupply.texture = SKTexture(imageNamed: "left_stop_sup")
+                
+            default:
+                return
+            }
+            
             game.isSupplyData = false
         }
         

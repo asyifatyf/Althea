@@ -78,23 +78,35 @@ class SupplyScene: SKScene {
         switch characterState {
         case .upStop:
             characterSupply.texture = SKTexture(imageNamed: "up_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "upStop")
+            
         case .upRun:
             characterSupply.texture = SKTexture(imageNamed: "up_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "upRun")
             
         case .rightStop:
             characterSupply.texture = SKTexture(imageNamed: "right_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "rightStop")
+            
         case .rightRun:
             characterSupply.texture = SKTexture(imageNamed: "right_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "rightRun")
             
         case .downStop:
             characterSupply.texture = SKTexture(imageNamed: "down_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "downStop")
+            
         case .downRun:
             characterSupply.texture = SKTexture(imageNamed: "down_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "downRun")
             
         case .leftStop:
             characterSupply.texture = SKTexture(imageNamed: "left_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "leftStop")
+            
         case .leftRun:
             characterSupply.texture = SKTexture(imageNamed: "left_stop_sup")
+            game.sendSupplyOrientation(supplyOrientation: "leftRun")
             
         }
     }
@@ -227,12 +239,70 @@ class SupplyScene: SKScene {
             let navigatorAction = SKAction.moveBy(x: game.navigatorXPosition, y: game.navigatorYPosition, duration: 0.5)
             characterNavigator.run(navigatorAction)
             
+            switch game.navigatorOrientation {
+            case "upStop":
+                characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
+                
+            case "upRun":
+                characterNavigator.texture = SKTexture(imageNamed: "up_stop_nav")
+                
+            case "rightStop":
+                characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
+                
+            case "rightRun":
+                characterNavigator.texture = SKTexture(imageNamed: "right_stop_nav")
+                
+            case "downStop":
+                characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
+                
+            case "downRun":
+                characterNavigator.texture = SKTexture(imageNamed: "down_stop_nav")
+                
+            case "leftStop":
+                characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
+                
+            case "leftRun":
+                characterNavigator.texture = SKTexture(imageNamed: "left_stop_nav")
+                
+            default:
+                return
+            }
+            
             game.isNavigatorData = false
         }
         
         while game.isCookData{
             let cookAction = SKAction.moveBy(x: game.cookXPosition, y: game.cookYPosition, duration: 0.5)
             characterCook.run(cookAction)
+            
+            switch game.cookOrientation {
+            case "upStop":
+                characterCook.texture = SKTexture(imageNamed: "up_stop")
+                
+            case "upRun":
+                characterCook.texture = SKTexture(imageNamed: "up_run")
+                
+            case "rightStop":
+                characterCook.texture = SKTexture(imageNamed: "right_stop")
+                
+            case "rightRun":
+                characterCook.texture = SKTexture(imageNamed: "right_run")
+                
+            case "downStop":
+                characterCook.texture = SKTexture(imageNamed: "down_stop")
+                
+            case "downRun":
+                characterCook.texture = SKTexture(imageNamed: "down_run")
+                
+            case "leftStop":
+                characterCook.texture = SKTexture(imageNamed: "left_stop")
+                
+            case "leftRun":
+                characterCook.texture = SKTexture(imageNamed: "left_run")
+                
+            default:
+                return
+            }
             
             game.isCookData = false
         }

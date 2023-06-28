@@ -58,6 +58,18 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var isSupplyData: Bool = false
     @Published var isCookData: Bool = false
     
+    @Published var navigatorOrientation: String = "upStop"
+    @Published var supplyOrientation: String = "upStop"
+    @Published var cookOrientation: String = "upStop"
+    
+    @Published var objectType: String = ""
+    @Published var isObjectAvailable: Bool = false
+    
+    @Published var navigatorEnergy: Int = 0
+    @Published var supplyEnergy: Int = 0
+    @Published var cookEnergy: Int = 0
+    @Published var isEnergyData: Bool = false
+    
     
     /// The name of the match.
     var matchName: String {
@@ -287,6 +299,15 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
             print("Error: \(error.localizedDescription).")
         }
     }
+    
+    func sendNavigatorOrientation(navigatorOrientation: String) {
+        do {
+            let navigatorOrientation = encodeChar(characterOrientation: navigatorOrientation)
+            try myMatch?.sendData(toAllPlayers: navigatorOrientation!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
 
     
     func sendSupplyData(xPosition: CGFloat, yPosition: CGFloat) {
@@ -295,6 +316,15 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
             try myMatch?.sendData(toAllPlayers: dataX!, with: GKMatch.SendDataMode.unreliable)
             let dataY = encodeChar(yPosition: yPosition)
             try myMatch?.sendData(toAllPlayers: dataY!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+    
+    func sendSupplyOrientation(supplyOrientation: String) {
+        do {
+            let supplyOrientation = encodeChar(characterOrientation: supplyOrientation)
+            try myMatch?.sendData(toAllPlayers: supplyOrientation!, with: GKMatch.SendDataMode.unreliable)
         } catch {
             print("Error: \(error.localizedDescription).")
         }
@@ -310,6 +340,34 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
             print("Error: \(error.localizedDescription).")
         }
     }
+    
+    func sendCookOrientation(cookOrientation: String) {
+        do {
+            let cookOrientation = encodeChar(characterOrientation: cookOrientation)
+            try myMatch?.sendData(toAllPlayers: cookOrientation!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+    
+    func sendObjectType(objectType: String) {
+        do {
+            let objectType = encodeChar(objectType: objectType)
+            try myMatch?.sendData(toAllPlayers: objectType!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+    
+    func sendEnergy(energyAmount: Int) {
+        do {
+            let energyAmount = encodeChar(characterEnergy: energyAmount)
+            try myMatch?.sendData(toAllPlayers: energyAmount!, with: GKMatch.SendDataMode.unreliable)
+        } catch {
+            print("Error: \(error.localizedDescription).")
+        }
+    }
+
     
     /// Quits a match and saves the game data.
     /// - Tag:endMatch

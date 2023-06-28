@@ -79,6 +79,15 @@ extension RealTimeGame: GKMatchDelegate {
             } else if let yCharPos = characterData?.yCharacterPos{
                 navigatorYPosition = yCharPos
                 isNavigatorData = true
+            } else if let orientation = characterData?.characterOrientation{
+                navigatorOrientation = orientation
+                isNavigatorData = true
+            } else if let objectTypeData = characterData?.objectType{
+                objectType = objectTypeData
+                isObjectAvailable = true
+            } else if let characterEnergy = characterData?.characterEnergy{
+                navigatorEnergy = characterEnergy
+                isEnergyData = true
             }
             
         } else if player.alias == supplyName {
@@ -93,6 +102,15 @@ extension RealTimeGame: GKMatchDelegate {
             } else if let yCharPos = characterData?.yCharacterPos{
                 supplyYPosition = yCharPos
                 isSupplyData = true
+            }else if let orientation = characterData?.characterOrientation{
+                supplyOrientation = orientation
+                isSupplyData = true
+            }else if let objectTypeData = characterData?.objectType{
+                objectType = objectTypeData
+                isObjectAvailable = true
+            }else if let characterEnergy = characterData?.characterEnergy{
+                supplyEnergy = characterEnergy
+                isEnergyData = true
             }
             
         } else if player.alias == cookName {
@@ -107,6 +125,16 @@ extension RealTimeGame: GKMatchDelegate {
             } else if let yCharPos = characterData?.yCharacterPos{
                 cookYPosition = yCharPos
                 isCookData = true
+            }
+            else if let orientation = characterData?.characterOrientation{
+                cookOrientation = orientation
+                isCookData = true
+            }else if let objectTypeData = characterData?.objectType{
+                objectType = objectTypeData
+                isObjectAvailable = true
+            }else if let characterEnergy = characterData?.characterEnergy{
+                cookEnergy = characterEnergy
+                isEnergyData = true
             }
         }
         
