@@ -26,7 +26,7 @@ struct RolePickView: View {
                     // Display the game title.
                     //                Text("Pick a Role")
                     //                    .font(.title)
-                    Image("backgroundRolePage")
+                    Image("RolePick")
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea()

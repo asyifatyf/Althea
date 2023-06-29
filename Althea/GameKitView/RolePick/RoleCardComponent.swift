@@ -20,7 +20,7 @@ struct RoleCardComponent: View {
 
                 HStack (spacing: 40){
                     VStack{
-                        Image("naviGroup")
+                        Image("naviCard")
                             .scaleEffect(0.95)
                             .onTapGesture {
                                 if !game.isNavigatorReady{
@@ -34,7 +34,7 @@ struct RoleCardComponent: View {
                             .offset(y: -24)
                     }
                     VStack{
-                        Image("archieGroup")
+                        Image("archieCard")
                             .scaleEffect(0.95)
                             .offset(x: -6, y: -10)
                             .onTapGesture {
@@ -49,7 +49,7 @@ struct RoleCardComponent: View {
                         
                     }
                     VStack{
-                        Image("pepperGroup")
+                        Image("pepperCard")
                             .scaleEffect(0.95)
                             .offset(y: 3.4)
                             .onTapGesture {
@@ -74,6 +74,6 @@ struct RoleCardComponent: View {
 struct RoleCardComponent_Previews: PreviewProvider {
     static var previews: some View {
         RoleCardComponent()
-            .environmentObject(RealTimeGame())
+            .environmentObject(RealTimeGame()).previewInterfaceOrientation(.landscapeLeft)
     }
 }

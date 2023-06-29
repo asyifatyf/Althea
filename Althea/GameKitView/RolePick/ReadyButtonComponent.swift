@@ -50,5 +50,6 @@ struct ReadyButtonComponent_Previews: PreviewProvider {
     static var previews: some View {
         ReadyButtonComponent()
             .environmentObject(RealTimeGame())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

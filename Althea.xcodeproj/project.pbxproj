@@ -24,6 +24,10 @@
 		0F5724FB2A42C81F0044715A /* RealTimeGame+Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */; };
 		0F5724FD2A42C8570044715A /* RealTimeGame+VoiceChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */; };
 		0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */; };
+		2409CA9C2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */; };
+		2409CA9E2A4D84B500F7ABD8 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */; };
+		2409CAA42A4D8F5000F7ABD8 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */; };
+		2409CAA52A4D8F8000F7ABD8 /* Trailer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */; };
 		248EA1F82A4457490083CA96 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F72A4457490083CA96 /* NavigatorView.swift */; };
 		248EA1FA2A44575B0083CA96 /* SupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F92A44575B0083CA96 /* SupplyView.swift */; };
 		248EA1FC2A44576A0083CA96 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1FB2A44576A0083CA96 /* CookView.swift */; };
@@ -56,6 +60,10 @@
 		0F5724FA2A42C81F0044715A /* RealTimeGame+Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+Friends.swift"; sourceTree = "<group>"; };
 		0F5724FC2A42C8570044715A /* RealTimeGame+VoiceChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+VoiceChat.swift"; sourceTree = "<group>"; };
 		0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+MatchData.swift"; sourceTree = "<group>"; };
+		2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButtonComponent.swift; sourceTree = "<group>"; };
+		2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Trailer.mp4; sourceTree = "<group>"; };
+		2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
 		248EA1F72A4457490083CA96 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		248EA1F92A44575B0083CA96 /* SupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyView.swift; sourceTree = "<group>"; };
 		248EA1FB2A44576A0083CA96 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
@@ -120,7 +128,11 @@
 		0F5724E82A42C3200044715A /* GameKitView */ = {
 			isa = PBXGroup;
 			children = (
+				2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */,
+				2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */,
+				2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */,
 				0F5724D82A42C1020044715A /* HomeView.swift */,
+				2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */,
 				0F5724E62A42C2DF0044715A /* FriendsView.swift */,
 				0F5724E92A42C4460044715A /* ChatView.swift */,
 				0F5724EB2A42C4580044715A /* MessageView.swift */,
@@ -242,6 +254,8 @@
 				248EA2092A456B1F0083CA96 /* SupplyScene.sks in Resources */,
 				0F5724DB2A42C1030044715A /* Assets.xcassets in Resources */,
 				248EA2052A4552A50083CA96 /* NavigatorScene.sks in Resources */,
+				2409CAA42A4D8F5000F7ABD8 /* Video.mp4 in Resources */,
+				2409CAA52A4D8F8000F7ABD8 /* Trailer.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +269,7 @@
 				248EA1FA2A44575B0083CA96 /* SupplyView.swift in Sources */,
 				0F5724EC2A42C4580044715A /* MessageView.swift in Sources */,
 				0F5724D92A42C1020044715A /* HomeView.swift in Sources */,
+				2409CA9C2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift in Sources */,
 				0F5724EF2A42C4DA0044715A /* RealTimeGame.swift in Sources */,
 				0F5724E52A42C2BA0044715A /* RolePickView.swift in Sources */,
 				248EA20F2A456C7E0083CA96 /* CookScene.swift in Sources */,
@@ -268,6 +283,7 @@
 				0F5724E72A42C2DF0044715A /* FriendsView.swift in Sources */,
 				0F5724F52A42C7730044715A /* RealTimeGame+GKMatchDelegate.swift in Sources */,
 				248EA2072A4552B70083CA96 /* NavigatorScene.swift in Sources */,
+				2409CA9E2A4D84B500F7ABD8 /* LandingPageView.swift in Sources */,
 				248EA2012A4487F40083CA96 /* ReadyButtonComponent.swift in Sources */,
 				0F5724F12A42C6F70044715A /* RealTimeGame+GKGameCenterView.swift in Sources */,
 				0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */,

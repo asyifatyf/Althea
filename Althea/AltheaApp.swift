@@ -12,7 +12,7 @@ struct AltheaApp: App {
     var body: some Scene {
         let game = RealTimeGame.shared
         WindowGroup {
-            HomeView()
+            LandingPageView()
                 .environmentObject(game)
         }
     }
