@@ -10,6 +10,7 @@ import GameKit
 
 struct FriendsView: View {
     @ObservedObject var game: RealTimeGame
+    @Binding var showFriends: Bool
     
     var body: some View {
         Spacer()
@@ -26,6 +27,8 @@ struct FriendsView: View {
                     }
                 }
             }
+        }.onTapGesture {
+            showFriends = false
         }
     }
 }

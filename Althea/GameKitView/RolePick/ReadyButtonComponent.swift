@@ -14,8 +14,6 @@ struct ReadyButtonComponent: View {
     @State private var isButtonClicked = false
     @State var readyStatus: Bool = false
 
-//    @State private var buttonImage = Image("ReadyButton")
-//    @State private var buttonColor = Color(.blue)
     
     var body: some View {
         Button(action: {
@@ -36,10 +34,6 @@ struct ReadyButtonComponent: View {
         {
             Image(isButtonClicked ? "buttonWaiting" : "readyButton")
 
-//                .padding()
-//                .background(buttonColor)
-//                .foregroundColor(.white)
-//                .cornerRadius(10)
         }
         .disabled(readyStatus)
         

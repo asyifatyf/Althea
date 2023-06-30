@@ -59,9 +59,7 @@ class CookScene: SKScene {
             padRight.position = CGPoint(x: padUp.position.x - cameraOffset.x + 20, y: padUp.position.y - cameraOffset.y - 25)
             padLeft.position = CGPoint(x: padUp.position.x - cameraOffset.x - 30, y: padUp.position.y - cameraOffset.y - 25)
         }
-//        let zoomInAction = SKAction.scale(to: 0.5, duration: 1)
-//        sceneCamera.run(zoomInAction)
-        
+
     }
     
     private enum Direction {
@@ -137,14 +135,6 @@ class CookScene: SKScene {
         characterCook.run(moveAction)
         
         
-//        let moveVectorSupply = CGVector(dx: game.supplyPosition.x, dy: game.supplyPosition.y)
-//        let moveSupply = SKAction.move(by: moveVectorSupply, duration: 0.5)
-//        characterSupply.run(moveSupply)
-//
-//        let moveVectorNavigator = CGVector(dx: game.navigatorPosition.x, dy: game.navigatorPosition.y)
-//        let moveNavigator = SKAction.move(by: moveVectorNavigator, duration: 0.5)
-//        characterNavigator.run(moveNavigator)
-        
         NSLog("xOffset: %f, yOffset: %f", Double(xOffset), Double(yOffset))
     }
     
@@ -160,38 +150,19 @@ class CookScene: SKScene {
             case "padUp":
                 moveCharacter(direction: .up)
                 characterState = .upRun
-                
-//                let position = characterCook.position
-//                game.sendCookData(position: position)
-//                print(position)
 
             case "padRight":
                 moveCharacter(direction: .right)
                 characterState = .rightRun
-                
-//                let position = characterCook.position
-//                game.sendCookData(position: position)
-//                print(position)
-
 
             case "padDown":
                 moveCharacter(direction: .down)
                 characterState = .downRun
-                
-//                let position = characterCook.position
-//                game.sendCookData(position: position)
-//                print(position)
-
 
             case "padLeft":
                 moveCharacter(direction: .left)
                 characterState = .leftRun
                 
-//                let position = characterCook.position
-//                game.sendCookData(position: position)
-//                print(position)
-
-
             default:
                 break
             }
@@ -301,31 +272,6 @@ class CookScene: SKScene {
             
             game.isSupplyData = false
         }
-        
-//        while game.isDataChanged1 || game.isDataChanged2 {
-
-//
-
-//
-//            game.isDataChanged1 = false
-//            game.isDataChanged2 = false
-//        }
-        
-//        print("posisi navigator: \(game.navigatorPosition)")
-//        print("posisi supply: \(game.supplyPosition)")
-        
-//        let moveVectorSupply = CGVector(dx: game.supplyPosition.x, dy: game.supplyPosition.y)
-//        let moveSupply = SKAction.move(by: moveVectorSupply, duration: 2)
-//        characterSupply.run(moveSupply)
-//
-//        let moveVectorNavigator = CGVector(dx: game.navigatorPosition.x, dy: game.navigatorPosition.y)
-//        let moveNavigator = SKAction.move(by: moveVectorNavigator, duration: 2)
-//        characterNavigator.run(moveNavigator)
-        
-//        characterNavigator.position = game.navigatorPosition
-//        characterSupply.position = game.supplyPosition
-        
-
         
     }
 }

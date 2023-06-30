@@ -7,10 +7,13 @@
 
 import SwiftUI
 import GameKit
+import AVFoundation
 
 struct HomeView: View {
     @EnvironmentObject private var game: RealTimeGame
     @State var showFriends: Bool = false
+    let audioURL = Bundle.main.url(forResource: "Althea-Soundtrack", withExtension: "mp3")
+    @State private var audioPlayer: AVAudioPlayer?
     
     var body: some View {
         GeometryReader{geo in
@@ -26,30 +29,6 @@ struct HomeView: View {
                 Spacer().frame(width: 100)
                 HomeViewButtonComponent(showFriends: $showFriends)
 
-    //            Form {
-    //                Section("Start Game") {
-    //                    Button("Choose Player") {
-    //                        game.choosePlayer()
-    //                    }
-    //
-    //
-    //                }
-    //
-    //                Section("Friends") {
-    //                    Button("Add Friends") {
-    //                        game.addFriends()
-    //                    }
-    //
-    //                    Button("Access Friends") {
-    //                        Task {
-    //                            await game.accessFriends()
-    //                            showFriends = true
-    //                            GKAccessPoint.shared.isActive = false
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //            .disabled(!game.matchAvailable)
             }
         }
             .navigationBarBackButtonHidden(true)
@@ -58,23 +37,37 @@ struct HomeView: View {
                 if !game.playingGame {
                     game.authenticatePlayer()
                 }
+
+                do{
+                    audioPlayer = try AVAudioPlayer(contentsOf: audioURL!)
+                    audioPlayer?.numberOfLoops = -1 // Set the number of loops to -1 for infinite looping
+                    audioPlayer?.prepareToPlay()
+                    audioPlayer?.volume = 0.4
+                    audioPlayer?.play()
+                    
+
+                } catch{
+                    print("Error loading audio file: \(error.localizedDescription)")
+                }
+
             }
+            
                 
             // Display the game interface if a match is ongoing.
             .fullScreenCover(isPresented: $game.playingGame) {
                 RolePickView()
             }
-            
             // Display the local player's friends.
             .sheet(isPresented: $showFriends, onDismiss: {
                 showFriends = false
                 GKAccessPoint.shared.isActive = true
-            }) {
-                FriendsView(game: game)
+            })
+            {
+                FriendsView(game: game, showFriends: $showFriends)
             }
         }
         }
-        
+ 
 }
 
 struct HomeView_Previews: PreviewProvider {

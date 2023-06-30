@@ -21,50 +21,49 @@ struct RoleCardComponent: View {
                 HStack (spacing: 40){
                     VStack{
                         Image("naviCard")
-                            .scaleEffect(0.95)
+                            .scaleEffect(0.85)
                             .onTapGesture {
                                 if !game.isNavigatorReady{
                                     game.roleNavigator()
                                 }
                                 
                             }.disabled(game.isNavigatorReady)
-//                            .disabled((game.isReady && game.myScore == 1) || (game.isOpponentReady && game.opponentScore == 1) || (game.isOpponent1Ready && game.opponentScore1 == 1))
+
                         Text("\(game.navigatorName)")
                             .foregroundColor(.black)
-                            .offset(y: -24)
+                            .offset(x: 4, y: -38)
                     }
                     VStack{
                         Image("archieCard")
-                            .scaleEffect(0.95)
+                            .scaleEffect(0.85)
                             .offset(x: -6, y: -10)
                             .onTapGesture {
                                 if !game.isSupplyReady{
                                     game.roleSupply()
                                 }
                             }.disabled(game.isSupplyReady)
-//                            .disabled((game.isReady && game.myScore == 2) || (game.isOpponentReady && game.opponentScore == 2) || (game.isOpponent1Ready && game.opponentScore1 == 2))
+
                         Text("\(game.supplyName)")
                             .foregroundColor(.black)
-                            .offset(y: -34)
+                            .offset(x: -5,y: -48)
                         
                     }
                     VStack{
                         Image("pepperCard")
-                            .scaleEffect(0.95)
+                            .scaleEffect(0.85)
                             .offset(y: 3.4)
                             .onTapGesture {
                                 if !game.isCookReady{
                                     game.roleCook()
                                     print(game.myScore)
                                 }
-                                //                        self.cookName = game.myName
                             }.disabled(game.isCookReady)
-//                            .disabled((game.isReady && game.myScore == 3) || (game.isOpponentReady && game.opponentScore == 3) || (game.isOpponent1Ready && game.opponentScore1 == 3))
+
                         Text("\(game.cookName)")
                             .foregroundColor(.black)
-                            .offset(y: -20)
+                            .offset(y: -34)
                     }
-                }.position(x: geometry.size.width/2.073, y:geometry.size.height/1.9)
+                }.position(x: geometry.size.width/2.015, y:geometry.size.height/2)
 
             }
         }

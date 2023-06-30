@@ -11,7 +11,7 @@ import AVKit
 
 func getVideoURL() -> URL? {
     // Replace "videoFileName" with the actual name of your video file
-    if let videoURL = Bundle.main.url(forResource: "Trailer", withExtension: "mp4") {
+    if let videoURL = Bundle.main.url(forResource: "OpeningVideoAlthea", withExtension: "mp4") {
         return videoURL
     }
     return nil
@@ -22,7 +22,7 @@ struct LandingPageView: View {
     private let player: AVPlayer
     @State private var playerDidFinish = false
     private let playerController = AVPlayerViewController()
-
+    
     init() {
         guard let videoURL = getVideoURL() else {
             fatalError("Video file not found")
@@ -38,7 +38,7 @@ struct LandingPageView: View {
             self.playerDidFinish = true
         }
     }
-
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -53,52 +53,41 @@ struct LandingPageView: View {
                         pauseVideo()
                     }
                     .onChange(of: playerDidFinish) { didFinish in
-                                        if didFinish {
-                                            navigateToNextView = true
-                                        }
-                                    }
+                        if didFinish {
+                            navigateToNextView = true
+                        }
+                    }
 
-                // Overlay with navigation button
-//                Button(action: {
-//                    navigateToNextView = true
-//                    pauseVideo()
-//                }) {
-//                    Text("skip").padding(.all, 40)
-//                }
                 NavigationLink(
                     destination: NextView(),
                     isActive: $navigateToNextView,
                     label: {
                         Color.clear
-//                        Text("Skip")
-//                            .padding()
-//                            .background(Color.black.opacity(0.5))
-//                            .foregroundColor(.white)
-//                            .clipShape(Circle())
-                    })
-                    .padding(.trailing)
-                    .padding(.top)
-            }
-//            .fullScreenCover(isPresented: $navigateToNextView, content: NextView.init)
-            .edgesIgnoringSafeArea(.all)
-        }
-        }
-        
 
+                    })
+                .padding(.trailing)
+                .padding(.top)
+            }
+            //            .fullScreenCover(isPresented: $navigateToNextView, content: NextView.init)
+            .edgesIgnoringSafeArea(.all)
+        }.navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    
     // Helper method to play the video
     private func playVideo() {
         playerController.player = player
         player.play()
         addTimeObserver()
-
+        
     }
-
+    
     // Helper method to pause the video
     private func pauseVideo() {
         player.pause()
     }
     private func addTimeObserver() {
-        let time = CMTime(seconds: 33, preferredTimescale: 1)
+        let time = CMTime(seconds: 55, preferredTimescale: 1)
         player.addBoundaryTimeObserver(forTimes: [NSValue(time: time)], queue: nil) { [ self] in
             self.navigateToNextView = true
         }
@@ -112,7 +101,7 @@ struct LandingPageView: View {
 
 struct NextView: View {
     let game = RealTimeGame.shared
-
+    
     var body: some View {
         HomeView()
             .environmentObject(game)
@@ -121,7 +110,7 @@ struct NextView: View {
 
 struct VideoPlayerLayer: UIViewControllerRepresentable {
     let player: AVPlayer
-
+    
     func makeUIViewController(context: Context) -> AVPlayerViewController {
         let viewController = AVPlayerViewController()
         viewController.player = player
@@ -132,10 +121,10 @@ struct VideoPlayerLayer: UIViewControllerRepresentable {
         // Disable fast forward and rewind gestures
         viewController.allowsPictureInPicturePlayback = false
         viewController.requiresLinearPlayback = true
-
+        
         return viewController
     }
-
+    
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
         // No updates needed
     }

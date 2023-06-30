@@ -26,8 +26,8 @@
 		0F5724FF2A42C8750044715A /* RealTimeGame+MatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */; };
 		2409CA9C2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */; };
 		2409CA9E2A4D84B500F7ABD8 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */; };
-		2409CAA42A4D8F5000F7ABD8 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */; };
-		2409CAA52A4D8F8000F7ABD8 /* Trailer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */; };
+		2460117E2A4EA796005B2ECD /* OpeningVideoAlthea.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2460117D2A4EA78D005B2ECD /* OpeningVideoAlthea.mp4 */; };
+		246011852A4EABD4005B2ECD /* Althea-Soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 246011842A4EABD4005B2ECD /* Althea-Soundtrack.mp3 */; };
 		248EA1F82A4457490083CA96 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F72A4457490083CA96 /* NavigatorView.swift */; };
 		248EA1FA2A44575B0083CA96 /* SupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1F92A44575B0083CA96 /* SupplyView.swift */; };
 		248EA1FC2A44576A0083CA96 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248EA1FB2A44576A0083CA96 /* CookView.swift */; };
@@ -62,8 +62,8 @@
 		0F5724FE2A42C8750044715A /* RealTimeGame+MatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealTimeGame+MatchData.swift"; sourceTree = "<group>"; };
 		2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButtonComponent.swift; sourceTree = "<group>"; };
 		2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
-		2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Trailer.mp4; sourceTree = "<group>"; };
-		2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
+		2460117D2A4EA78D005B2ECD /* OpeningVideoAlthea.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = OpeningVideoAlthea.mp4; path = ../../../../OpeningVideoAlthea.mp4; sourceTree = "<group>"; };
+		246011842A4EABD4005B2ECD /* Althea-Soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Althea-Soundtrack.mp3"; path = "../../../../Althea-Soundtrack.mp3"; sourceTree = "<group>"; };
 		248EA1F72A4457490083CA96 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		248EA1F92A44575B0083CA96 /* SupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyView.swift; sourceTree = "<group>"; };
 		248EA1FB2A44576A0083CA96 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 		0F5724E82A42C3200044715A /* GameKitView */ = {
 			isa = PBXGroup;
 			children = (
-				2409CAA32A4D8B8100F7ABD8 /* Video.mp4 */,
-				2409CAA22A4D897600F7ABD8 /* Trailer.mp4 */,
+				246011842A4EABD4005B2ECD /* Althea-Soundtrack.mp3 */,
+				2460117D2A4EA78D005B2ECD /* OpeningVideoAlthea.mp4 */,
 				2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */,
 				0F5724D82A42C1020044715A /* HomeView.swift */,
 				2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */,
@@ -250,12 +250,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F5724DE2A42C1030044715A /* Preview Assets.xcassets in Resources */,
+				2460117E2A4EA796005B2ECD /* OpeningVideoAlthea.mp4 in Resources */,
+				246011852A4EABD4005B2ECD /* Althea-Soundtrack.mp3 in Resources */,
 				248EA20D2A456C2E0083CA96 /* CookScene.sks in Resources */,
 				248EA2092A456B1F0083CA96 /* SupplyScene.sks in Resources */,
 				0F5724DB2A42C1030044715A /* Assets.xcassets in Resources */,
 				248EA2052A4552A50083CA96 /* NavigatorScene.sks in Resources */,
-				2409CAA42A4D8F5000F7ABD8 /* Video.mp4 in Resources */,
-				2409CAA52A4D8F8000F7ABD8 /* Trailer.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
