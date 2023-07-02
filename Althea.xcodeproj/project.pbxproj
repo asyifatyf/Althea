@@ -172,6 +172,7 @@
 		0F5724D52A42C1020044715A /* Althea */ = {
 			isa = PBXGroup;
 			children = (
+				B30439DB2A51B3570065C27C /* Volumes */,
 				0F5724D62A42C1020044715A /* AltheaApp.swift */,
 				240FFB602A4ECC56001BA1DA /* PixelGameFont.ttf */,
 				240FFB752A4ECD64001BA1DA /* PNGSequence.swift */,
@@ -195,8 +196,6 @@
 		0F5724E82A42C3200044715A /* GameKitView */ = {
 			isa = PBXGroup;
 			children = (
-				B30439D92A51AF580065C27C /* OpeningVideoAlthea.mp4 */,
-				B30439D72A51AF500065C27C /* Althea-Soundtrack.m4a */,
 				2409CA9D2A4D84B500F7ABD8 /* LandingPageView.swift */,
 				0F5724D82A42C1020044715A /* HomeView.swift */,
 				2409CA9B2A4D7C9A00F7ABD8 /* HomeViewButtonComponent.swift */,
@@ -335,6 +334,15 @@
 				248EA20E2A456C7E0083CA96 /* CookScene.swift */,
 			);
 			path = SceneCoba;
+			sourceTree = "<group>";
+		};
+		B30439DB2A51B3570065C27C /* Volumes */ = {
+			isa = PBXGroup;
+			children = (
+				B30439D92A51AF580065C27C /* OpeningVideoAlthea.mp4 */,
+				B30439D72A51AF500065C27C /* Althea-Soundtrack.m4a */,
+			);
+			path = Volumes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,7 +647,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MiniChallengeTeam6.Althea;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MC2.Althea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
