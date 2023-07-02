@@ -65,9 +65,9 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     @Published var objectType: String = ""
     @Published var isObjectAvailable: Bool = false
     
-    @Published var navigatorEnergy: Int = 0
-    @Published var supplyEnergy: Int = 0
-    @Published var cookEnergy: Int = 0
+    @Published var navigatorEnergy: CGFloat = 0
+    @Published var supplyEnergy: CGFloat = 0
+    @Published var cookEnergy: CGFloat = 0
     @Published var isEnergyData: Bool = false
     
     
@@ -359,14 +359,48 @@ class RealTimeGame: NSObject, GKGameCenterControllerDelegate, ObservableObject {
         }
     }
     
-    func sendEnergy(energyAmount: Int) {
-        do {
-            let energyAmount = encodeChar(characterEnergy: energyAmount)
-            try myMatch?.sendData(toAllPlayers: energyAmount!, with: GKMatch.SendDataMode.unreliable)
-        } catch {
-            print("Error: \(error.localizedDescription).")
+    func sendEnergy(energyAmount: CGFloat, who: String) {
+        var supplyPlayer: GKPlayer
+        var navigatorPlayer: GKPlayer
+        if "\(myMatch?.players[0])" == supplyName{
+            supplyPlayer = (myMatch?.players[0])!
+            navigatorPlayer = (myMatch?.players[1])!
+        } else{
+            supplyPlayer = (myMatch?.players[1])!
+            navigatorPlayer = (myMatch?.players[0])!
+        }
+        if who == "supply"{
+            do {
+                let energyAmount = encodeChar(characterEnergy: energyAmount)
+                try myMatch?.send(energyAmount!, to: [supplyPlayer], dataMode: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
+        } else if who == "navigator"{
+            do {
+                let energyAmount = encodeChar(characterEnergy: energyAmount)
+                try myMatch?.send(energyAmount!, to: [navigatorPlayer], dataMode: GKMatch.SendDataMode.unreliable)
+            } catch {
+                print("Error: \(error.localizedDescription).")
+            }
         }
     }
+//    func sendEnergyNavigator(energyAmount: CGFloat) {
+//
+//        var navigatorPlayer: GKPlayer
+//        if "\(myMatch?.players[0])" == navigatorName{
+//            navigatorPlayer = (myMatch?.players[0])!
+//        } else{
+//            navigatorPlayer = (myMatch?.players[1])!
+//
+//        }
+//        do {
+//            let energyAmount = encodeChar(characterEnergy: energyAmount)
+//            try myMatch?.send(energyAmount!, to: [navigatorPlayer], dataMode: GKMatch.SendDataMode.unreliable)
+//        } catch {
+//            print("Error: \(error.localizedDescription).")
+//        }
+//    }
 
     
     /// Quits a match and saves the game data.

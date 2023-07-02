@@ -36,11 +36,11 @@ struct RolePickView: View {
                         
                         switch pageName{
                         case "navigator":
-                            NavigationLink(destination: NavigatorView(), isActive: $game.isActive, label: {EmptyView()})
+                            NavigationLink(destination: NaviView(), isActive: $game.isActive, label: {EmptyView()})
                         case "supply":
-                            NavigationLink(destination: SupplyView(), isActive: $game.isActive, label: {EmptyView()})
+                            NavigationLink(destination: ArchieView(scene: ArchieScene()), isActive: $game.isActive, label: {EmptyView()})
                         case "cook":
-                            NavigationLink(destination: CookView(), isActive: $game.isActive, label: {EmptyView()})
+                            NavigationLink(destination: PepperView(), isActive: $game.isActive, label: {EmptyView()})
                             
                         default:
                             EmptyView()

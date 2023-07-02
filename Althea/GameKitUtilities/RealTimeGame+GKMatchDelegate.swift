@@ -85,10 +85,11 @@ extension RealTimeGame: GKMatchDelegate {
             } else if let objectTypeData = characterData?.objectType{
                 objectType = objectTypeData
                 isObjectAvailable = true
-            } else if let characterEnergy = characterData?.characterEnergy{
-                navigatorEnergy = characterEnergy
-                isEnergyData = true
             }
+//            else if let characterEnergy = characterData?.characterEnergy{
+//                navigatorEnergy = characterEnergy
+//                isEnergyData = true
+//            }
             
         } else if player.alias == supplyName {
             if let playerReady = gameData?.playerReady{
@@ -108,10 +109,11 @@ extension RealTimeGame: GKMatchDelegate {
             }else if let objectTypeData = characterData?.objectType{
                 objectType = objectTypeData
                 isObjectAvailable = true
-            }else if let characterEnergy = characterData?.characterEnergy{
-                supplyEnergy = characterEnergy
-                isEnergyData = true
             }
+//            else if let characterEnergy = characterData?.characterEnergy{
+//                supplyEnergy = characterEnergy
+//                isEnergyData = true
+//            }
             
         } else if player.alias == cookName {
             if let playerReady = gameData?.playerReady{
@@ -133,7 +135,12 @@ extension RealTimeGame: GKMatchDelegate {
                 objectType = objectTypeData
                 isObjectAvailable = true
             }else if let characterEnergy = characterData?.characterEnergy{
-                cookEnergy = characterEnergy
+                if myRole == "supply" {
+                    supplyEnergy += characterEnergy
+                } else if myRole == "navigator" {
+                    navigatorEnergy += characterEnergy
+                }
+//                cookEnergy = characterEnergy
                 isEnergyData = true
             }
         }
